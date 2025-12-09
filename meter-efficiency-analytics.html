@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=2.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Cloud4Things" />
+  <title>Cloud4Things HES - Meter Efficiency Analytics</title>
+
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/topbar.css">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/fontawesome.min.css">
+
+  <!-- Bootstrap Icons -->
+  <link href="bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!--Animate-->
+  <link rel="stylesheet" href="css/animate.min.css">
+
+  <!--Datatables-->
+  <link rel="stylesheet" href="css/datatables.min.css">
+<!--Highcharts-->
+  <script src="/js/highmaps.js"></script>
+  <script src="/js/exporting.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/adaptive.js"></script>
+
+  <!--Apexcharts-->
+  <script src="/js/apexcharts.js"></script>
+
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-2 col-sm-2">
+            <div class="left-actions">
+              <!-- Mobile hamburger -->
+              <button id="btnMobileMenu" class="btn btn-sm btn-outline-secondary d-lg-none" aria-label="Open menu">
+                <i class="bi bi-filter-left"></i>
+              </button>
+
+              <!--Logo-->
+              <div class="logo-area">
+                <a href="index.html">
+                  <img src="images/logo.png" alt="C4T Logo" width="80px">
+                </a>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3">
+            <div class="d-flex gap-2">
+              <!-- Desktop collapse -->
+              <button id="btnCollapse" class="btn btn-sm btn-outline-secondary d-none d-lg-inline" aria-pressed="false"
+                title="Collapse sidebar">
+                <i class="bi bi-layout-sidebar-inset"></i>
+              </button>
+
+              <!--Search Btn-->
+              <!-- <div class="search-btn">
+                <input type="search" class="form-control form-control-sm" placeholder="Search..." aria-label="Search"
+                  aria-describedby="search-button">
+              </div> -->
+            </div>
+          </div>
+          <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-7">
+            <div class="d-flex align-items-center gap-2 right-actions" style="float: right; margin: 6px 0 0;">
+
+              <!-- color swatches -->
+              <!-- <button id="btnColorSwatches" class="btn btn-sm btn-outline-secondary" title="Color Swatches"
+          aria-label="ColorSwatches">
+          <i class="bi bi-palette"></i>
+        </button>
+        <div class="d-flex align-items-center gap-2 me-2 hidden" id="colorSwatch" style="display: none;">
+          <div class="btn-theme" title="Blue" data-color="#007AE9" style="background:#007AE9"></div>
+          <div class="btn-theme" title="Purple" data-color="#0097B2" style="background:#0097B2"></div>
+          <div class="btn-theme" title="Orange" data-color="#1A73E8" style="background:#1A73E8"></div>
+          <div class="btn-theme" title="Orange" data-color="#3B82F6" style="background:#3B82F6"></div>
+          <div class="btn-theme" title="Green" data-color="#DA5330" style="background:#DA5330"></div>
+        </div> -->
+              <!--Fullscreen-->
+              <button id="btnFullscreen" class="btn btn-sm btn-outline-secondary" title="Toggle fullscreen"
+                aria-label="Fullscreen">
+                <i class="bi bi-arrows-fullscreen"></i>
+              </button>
+
+              <!-- Light / Dark mode -->
+              <button id="btnTheme" class="btn btn-sm btn-outline-secondary" title="Toggle dark mode"
+                aria-pressed="false" aria-label="Toggle theme">
+                <i class="bi bi-moon-stars"></i>
+              </button>
+
+              <!-- user -->
+              <div class="dropdown" id="user-btn">
+                <a href="#" class="text-decoration-none" id="dropdownUser" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="bi bi-person-fill"></i> Demo User <span class="circle"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><a class="dropdown-item" href="#">Forget Password</a></li>
+                  <li><a class="dropdown-item" href="#">Change Password</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+
+
+      <nav class="nav flex-column" role="navigation" aria-label="Sidebar menu">
+        <!-- Dashboard -->
+        <div class="nav-item">
+          <a href="index.html" class="nav-link sidebar-link" data-key="dashboard" role="link">
+            <div class="icon"><i class="bi bi-speedometer2"></i></div>
+            <div class="label">Dashboard</div>
+          </a>
+        </div>
+
+        <!-- Meters -->
+        <div class="nav-item">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="meters"
+            aria-expanded="false" aria-controls="meters" role="button">
+            <div class="icon"><i class="bi bi-gear"></i></div>
+            <div class="label">Meters</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="meters" class="submenu" role="region" aria-hidden="true">
+            <a href="meter-command-console.html" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Meter Command Console</div>
+            </a>
+
+            <a href="meter-read-history.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
+              <div class="">Meter Read History</div>
+            </a>
+
+            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
+              <div class="">Meter Configuration</div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="nav-item active">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
+            aria-controls="analytics" role="button">
+            <div class="icon"><i class="bi bi-compass"></i></div>
+            <div class="label">Analytics</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="analytics" class="submenu" role="region" aria-hidden="true">
+            <a href="event-overview.html" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Event Overview</div>
+            </a>
+
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Load Analytics</div>
+            </a>
+
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Meter Efficiency Analytics</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tamper -->
+        <div class="nav-item">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
+            aria-controls="tamper" role="button">
+            <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
+            <div class="label">Tamper</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="tamper" class="submenu" role="region" aria-hidden="true">
+            <a href="command-center-overview.html" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Command Center </div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Bulk Command Execution</div>
+            </a>
+          </div>
+        </div>
+
+        <!--Firmwire-->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="firmwire" aria-expanded="false"
+            aria-controls="firmwire" role="button">
+            <div class="icon"><i class="bi bi-cpu"></i></div>
+            <div class="label">Firmwire</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="firmwire" class="submenu" role="region" aria-hidden="true">
+            <div class="mt-1">
+              <a href="#" class="subitem d-flex align-items-center js-sub-toggle" data-target="menu-advanced"
+                aria-expanded="false" aria-controls="menu-advanced" role="button">
+                <i class="bi bi-sliders"></i>
+                <div class="">Firmwire Overview</div>
+                <div class="caret"><i class="bi bi-chevron-right"></i></div>
+              </a>
+
+              <div id="menu-advanced" class="submenu-nested" role="region" aria-hidden="true">
+                <a href="#" class="subitem" role="link"><i class="bi bi-shuffle"></i>
+                  <div class="">Firwire Group management</div>
+                </a>
+                <a href="#" class="subitem" role="link"><i class="bi bi-hdd-stack"></i>
+                  <div class="">Firmwire Push Console</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Read Category -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="data-read-category" aria-expanded="false"
+            aria-controls="data-read-category" role="button">
+            <div class="icon"><i class="bi bi-folder2-open"></i></div>
+            <div class="label">Data Read Category</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="data-read-category" class="submenu" role="region" aria-hidden="true">
+            <a href="#" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Missing Reads Dashboard</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Duplicate Reads Dashboard</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- MDMS Sync Dashboard -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link" data-key="mdms-sync" role="link">
+            <div class="icon"><i class="bi bi-bar-chart-line"></i></div>
+            <div class="label">MDMS Sync Dashboard</div>
+          </a>
+        </div>
+
+        <!-- Reports -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="reports" aria-expanded="false"
+            aria-controls="reports" role="button">
+            <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
+            <div class="label">Reports</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="reports" class="submenu" role="region" aria-hidden="true">
+            <a href="#" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Energy Consumption Reports</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Generated Reports List</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Billing -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="billing" aria-expanded="false"
+            aria-controls="billing" role="button">
+            <div class="icon"><i class="bi bi-receipt"></i></div>
+            <div class="label">Billing</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="billing" class="submenu" role="region" aria-hidden="true">
+            <a href="#" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Billing overview</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">AT&C Loss Analytics</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Billing System Integration</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Payment Gateway Integrations</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer in sidebar (collapse button) -->
+        <div class="nav-item mt-3 px-2" style="display: none;">
+          <button id="sidebarCollapseBtn" class="btn btn-sm btn-outline-secondary w-100 d-lg-block"
+            aria-pressed="false">
+            <i class="bi bi-chevron-left"></i>
+            <span class="label ms-2 d-none d-lg-inline"></span>
+          </button>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- backdrop for mobile -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" tabindex="-1" aria-hidden="true"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main" class="content-wrap">
+      <h4 class="dash-head"> Meter Efficiency Analytics <span class="sub-dash-head"><a href="index.html">Dashboard</a>
+          <i class="bi bi-arrow-right-short"></i> Analytics <i class="bi bi-arrow-right-short"></i> Meter Efficiency
+          Analytics</span>
+      </h4>
+
+      <section class="meterEfficiancy">
+        <div class="container-fluid p-4">
+
+          <!-- TOP METRICS -->
+          <div class="row g-4 mb-4">
+
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="title">Meter Read Success</div>
+                <div class="metric-value text-primary">95.8%</div>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="card p-3">
+                <div class="title">Comm. Success</div>
+                <div class="metric-value text-success">92.1%</div>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="card p-3">
+                <div class="title">Online Meters</div>
+                <div class="metric-value">23,704</div>
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <div class="card p-3"> 
+                <div class="title">Coverage (24h)</div>
+                <div class="row">
+                  <div class="col-xxl-3">
+                    <div class="metric-value">92%</div>
+                  </div>
+                  <div class="col-xxl-9">
+                    <div class="progress mt-2 health-bar">
+                      <div class="progress-bar bg-success" style="width: 92%"></div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-1 small text-muted">
+                      <span>Good</span>
+                      <span>Moderate</span>
+                      <span>Poor</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- LINE CHARTS -->
+          <div class="row g-4 mb-4">
+
+            <div class="col-md-6">
+              <div class="card p-3">
+                <div class="title mb-2">Read Success Trend (Last 7 Days)</div>
+                <div id="readTrend" class="chart-box"></div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card p-3">
+                <div class="title mb-2">Comm. Success Trend</div>
+                <div id="commTrend" class="chart-box"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BOTTOM CHARTS -->
+          <div class="row g-4">
+
+            <div class="col-md-4">
+              <div class="card p-3">
+                <div class="title mb-2">Read Failures by Feeder/DT</div>
+                <div id="failuresChart" class="chart-box"></div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card p-3">
+                <div class="title mb-2">Meters Offline (Top Feeders)</div>
+                <div id="offlineChart" class="chart-box"></div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card p-4 text-center">
+                <div class="title">Tamper-impacted Meters</div>
+                <div class="metric-value text-danger mt-4">328</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <!--Footer-->
+      <section class="footer">
+        <p><i class="fa-regular fa-copyright"></i> Copyright
+          <script>document.write(new Date().getFullYear());</script>. All Rights Reserved. Empowered by
+          <a href="https://cloud4things.com/" target="_blank">Cloud4Things Technologies Pvt. Ltd</a>
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+
+  <!--Jquery-->
+  <script src="js/jquery.min.js"></script>
+
+  <!--Custom JS-->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/popper.min.js"></script>
+
+  <!--Data Table JS-->
+  <script src="js/dataTables.min.js"></script>
+
+  <!--Wow-JS-->
+  <script src="js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+
+</body>
+
+</html>

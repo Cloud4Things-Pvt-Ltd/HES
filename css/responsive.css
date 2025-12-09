@@ -1,0 +1,81 @@
+/*-----------------------------------------------------------------------------------
+
+Template Name: Cloud4Things HES
+Author: Satakshi Datta
+
+-----------------------------------------------------------------------------------*/
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .content-wrap {
+        margin-top: 17%;
+    }
+ 
+    .topbar .left-actions {
+        gap: 30px !important;
+    }
+
+    .right-actions {
+        float: none;
+        margin: -35px 0 0 0 !important;
+    }
+
+    h4.dash-head {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .top-cards .card-each {
+        margin: 0 0 10px 0;
+    }
+
+    .middle-card-each {
+        margin: 0 0 20px 0;
+    }
+    .load-item {
+    display: block;
+}
+}
+
+/* `md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {}
+
+/* `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    header.topbar {
+        display: block;
+    }
+
+
+
+    button#btnMobileMenu {
+        background: var(--primary);
+        color: var(--bz-color-common-white);
+        border: none;
+        font-size: 20px;
+        padding: 4px 10px 0;
+    }
+
+    .sidebar {
+        transform: translateX(-110%);
+    }
+
+    .sidebar.mobile-show {
+        transform: translateX(0);
+        z-index: 9999;
+        padding-top: 20px;
+    }
+
+    .content-wrap {
+        margin-left: 0;
+    }
+
+    .sidebar.collapsed {
+        width: var(--sidebar-w);
+    }
+}
+
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {}
+
+/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {}

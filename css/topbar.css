@@ -1,0 +1,132 @@
+/*-----------------------------------------------------------------------------------
+
+Template Name: Cloud4Things HES
+Author: Satakshi Datta
+ 
+-----------------------------------------------------------------------------------*/
+
+/* ---------- TOPBAR ---------- */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    z-index: 1300;
+    backdrop-filter: blur(6px);
+
+    .left-actions {
+        display: flex;
+        align-items: center;
+        gap: 140px;
+    }
+
+    h5 {
+        margin: 0;
+        font-size: 1.05rem;
+    }
+
+    #colorSwatch {
+        position: absolute;
+        width: 210px;
+        border-radius: 5px;
+        top: 77px;
+        right: 35px;
+        z-index: 9999999;
+        padding: 20px;
+    }
+
+}
+
+.logo-area {
+    padding: 6px 0 0;
+}
+
+.topbar .topbar .topbar button#btnCollapse {
+    border: none;
+    color: #bebebe;
+    font-size: 28px;
+    margin-left: 15px;
+}
+
+.topbar button#btnCollapse:hover {
+    background: none;
+    color: #999;
+}
+
+div#user-btn a i {
+    background: #bfbfbf;
+    color: #ffffff;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: block;
+    line-height: 39px;
+    font-size: 20px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.search-btn input[type="search"] {
+    background: #f8f9fb;
+    border: none;
+    font-size: 14px;
+    height: 40px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.search-btn {
+    margin: 5px 0 0;
+}
+
+div#user-btn a {
+    display: inline-flex;
+    line-height: 42px;
+    color: #000;
+    font-size: 16px;
+}
+
+span.circle {
+    background: #2ac100;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    left: 31px;
+    top: 28px;
+}
+
+button#btnTheme {
+    background: var(--primary);
+    color: #ffffff;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: block;
+    line-height: 35px;
+    font-size: 17px;
+    border-radius: 50%;
+    margin-left: 0px;
+    border: none;
+}
+
+button#btnFullscreen {
+    background: var(--primary);
+    color: #ffffff;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: block;
+    line-height: 35px;
+    font-size: 17px;
+    border-radius: 50%;
+    margin-left: 0px;
+    border: none;
+}

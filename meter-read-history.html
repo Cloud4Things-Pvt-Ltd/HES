@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=2.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Cloud4Things" />
+  <title>Cloud4Things HES - Meter Read History</title>
+
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/topbar.css">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/fontawesome.min.css">
+
+  <!-- Bootstrap Icons -->
+  <link href="bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!--Animate-->
+  <link rel="stylesheet" href="css/animate.min.css">
+
+  <!--Datatables-->
+  <link rel="stylesheet" href="css/datatables.min.css">
+<!--Highcharts-->
+  <script src="/js/highmaps.js"></script>
+  <script src="/js/exporting.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/adaptive.js"></script>
+
+  <!--Apexcharts-->
+  <script src="/js/apexcharts.js"></script>
+
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-2 col-sm-2">
+            <div class="left-actions">
+              <!-- Mobile hamburger -->
+              <button id="btnMobileMenu" class="btn btn-sm btn-outline-secondary d-lg-none" aria-label="Open menu">
+                <i class="bi bi-filter-left"></i>
+              </button>
+
+              <!--Logo-->
+              <div class="logo-area">
+                <a href="index.html">
+                  <img src="images/logo.png" alt="C4T Logo" width="80px">
+                </a>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-3">
+            <div class="d-flex gap-2">
+              <!-- Desktop collapse -->
+              <button id="btnCollapse" class="btn btn-sm btn-outline-secondary d-none d-lg-inline" aria-pressed="false"
+                title="Collapse sidebar">
+                <i class="bi bi-layout-sidebar-inset"></i>
+              </button>
+
+              <!--Search Btn-->
+              <!-- <div class="search-btn">
+                <input type="search" class="form-control form-control-sm" placeholder="Search..." aria-label="Search"
+                  aria-describedby="search-button">
+              </div> -->
+            </div>
+          </div>
+          <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7 col-sm-7">
+            <div class="d-flex align-items-center gap-2 right-actions" style="float: right; margin: 6px 0 0;">
+
+              <!-- color swatches -->
+              <!-- <button id="btnColorSwatches" class="btn btn-sm btn-outline-secondary" title="Color Swatches"
+          aria-label="ColorSwatches">
+          <i class="bi bi-palette"></i>
+        </button>
+        <div class="d-flex align-items-center gap-2 me-2 hidden" id="colorSwatch" style="display: none;">
+          <div class="btn-theme" title="Blue" data-color="#007AE9" style="background:#007AE9"></div>
+          <div class="btn-theme" title="Purple" data-color="#0097B2" style="background:#0097B2"></div>
+          <div class="btn-theme" title="Orange" data-color="#1A73E8" style="background:#1A73E8"></div>
+          <div class="btn-theme" title="Orange" data-color="#3B82F6" style="background:#3B82F6"></div>
+          <div class="btn-theme" title="Green" data-color="#DA5330" style="background:#DA5330"></div>
+        </div> -->
+              <!--Fullscreen-->
+              <button id="btnFullscreen" class="btn btn-sm btn-outline-secondary" title="Toggle fullscreen"
+                aria-label="Fullscreen">
+                <i class="bi bi-arrows-fullscreen"></i>
+              </button>
+
+              <!-- Light / Dark mode -->
+              <button id="btnTheme" class="btn btn-sm btn-outline-secondary" title="Toggle dark mode"
+                aria-pressed="false" aria-label="Toggle theme">
+                <i class="bi bi-moon-stars"></i>
+              </button>
+
+              <!-- user -->
+              <div class="dropdown" id="user-btn">
+                <a href="#" class="text-decoration-none" id="dropdownUser" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="bi bi-person-fill"></i> Demo User <span class="circle"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><a class="dropdown-item" href="#">Forget Password</a></li>
+                  <li><a class="dropdown-item" href="#">Change Password</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+
+
+      <nav class="nav flex-column" role="navigation" aria-label="Sidebar menu">
+        <!-- Dashboard -->
+        <div class="nav-item">
+          <a href="index.html" class="nav-link sidebar-link" data-key="dashboard" role="link">
+            <div class="icon"><i class="bi bi-speedometer2"></i></div>
+            <div class="label">Dashboard</div>
+          </a>
+        </div>
+
+        <!-- Meters -->
+        <div class="nav-item active">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="meters"
+            aria-expanded="false" aria-controls="meters" role="button">
+            <div class="icon"><i class="bi bi-gear"></i></div>
+            <div class="label">Meters</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="meters" class="submenu" role="region" aria-hidden="true">
+            <a href="meter-command-console.html" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Meter Command Console</div>
+            </a>
+
+            <a href="meter-read-history.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
+              <div class="">Meter Read History</div>
+            </a>
+
+            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Meter Configuration</div>
+            </a> 
+
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="nav-item">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
+            aria-controls="analytics" role="button">
+            <div class="icon"><i class="bi bi-compass"></i></div>
+            <div class="label">Analytics</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="analytics" class="submenu" role="region" aria-hidden="true">
+            <a href="event-overview.html" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Event Overview</div>
+            </a>
+
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Load Analytics</div>
+            </a>
+
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Meter Efficiency Analytics</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tamper -->
+        <div class="nav-item">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
+            aria-controls="tamper" role="button">
+            <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
+            <div class="label">Tamper</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="tamper" class="submenu" role="region" aria-hidden="true">
+            <a href="command-center-overview.html" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Command Center </div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Bulk Command Execution</div>
+            </a>
+          </div>
+        </div>
+
+        <!--Firmwire-->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="firmwire" aria-expanded="false"
+            aria-controls="firmwire" role="button">
+            <div class="icon"><i class="bi bi-cpu"></i></div>
+            <div class="label">Firmwire</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="firmwire" class="submenu" role="region" aria-hidden="true">
+            <div class="mt-1">
+              <a href="#" class="subitem d-flex align-items-center js-sub-toggle" data-target="menu-advanced"
+                aria-expanded="false" aria-controls="menu-advanced" role="button">
+                <i class="bi bi-sliders"></i>
+                <div class="">Firmwire Overview</div>
+                <div class="caret"><i class="bi bi-chevron-right"></i></div>
+              </a>
+
+              <div id="menu-advanced" class="submenu-nested" role="region" aria-hidden="true">
+                <a href="#" class="subitem" role="link"><i class="bi bi-shuffle"></i>
+                  <div class="">Firwire Group management</div>
+                </a>
+                <a href="#" class="subitem" role="link"><i class="bi bi-hdd-stack"></i>
+                  <div class="">Firmwire Push Console</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Read Category -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="data-read-category" aria-expanded="false"
+            aria-controls="data-read-category" role="button">
+            <div class="icon"><i class="bi bi-folder2-open"></i></div>
+            <div class="label">Data Read Category</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="data-read-category" class="submenu" role="region" aria-hidden="true">
+            <a href="#" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Missing Reads Dashboard</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Duplicate Reads Dashboard</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- MDMS Sync Dashboard -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link" data-key="mdms-sync" role="link">
+            <div class="icon"><i class="bi bi-bar-chart-line"></i></div>
+            <div class="label">MDMS Sync Dashboard</div>
+          </a>
+        </div>
+
+        <!-- Reports -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="reports" aria-expanded="false"
+            aria-controls="reports" role="button">
+            <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
+            <div class="label">Reports</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="reports" class="submenu" role="region" aria-hidden="true">
+            <a href="#" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Energy Consumption Reports</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Generated Reports List</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Billing -->
+        <div class="nav-item">
+          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="billing" aria-expanded="false"
+            aria-controls="billing" role="button">
+            <div class="icon"><i class="bi bi-receipt"></i></div>
+            <div class="label">Billing</div>
+            <div class="caret"><i class="bi bi-chevron-right"></i></div>
+          </a>
+
+          <div id="billing" class="submenu" role="region" aria-hidden="true">
+            <a href="#" class="subitem d-flex align-items-center" role="link">
+              <i class="bi bi-person-circle"></i>
+              <div class="">Billing overview</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">AT&C Loss Analytics</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Billing System Integration</div>
+            </a>
+
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+              <div class="">Payment Gateway Integrations</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer in sidebar (collapse button) -->
+        <div class="nav-item mt-3 px-2" style="display: none;">
+          <button id="sidebarCollapseBtn" class="btn btn-sm btn-outline-secondary w-100 d-lg-block"
+            aria-pressed="false">
+            <i class="bi bi-chevron-left"></i>
+            <span class="label ms-2 d-none d-lg-inline"></span>
+          </button>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- backdrop for mobile -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" tabindex="-1" aria-hidden="true"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main" class="content-wrap">
+      <h4 class="dash-head"> Meter Read History <span class="sub-dash-head"><a href="index.html">Dashboard</a> <i class="bi bi-arrow-right-short"></i> Meters <i class="bi bi-arrow-right-short"></i> Meter Read History</span></h4>
+
+      <section class="top-cards">
+        <div class="container-fluid p-0">
+          <div class="row g-0">
+            <div class="col-12 col-sm-6 col-md">
+              <div class="card-each">
+                <div class="card-icon">
+                  <i class="bi bi-person-check-fill"></i>
+                </div>
+                <div class="card-body">
+                  <h4>Consumer Number</h4>
+                  <h2>238784793901</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md">
+              <div class="card-each">
+                <div class="card-icon">
+                  <i class="bi bi-broadcast-pin"></i>
+                </div>
+                <div class="card-body">
+                  <h4>Meters Status</h4>
+                  <h2>Active</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md">
+              <div class="card-each">
+                <div class="card-icon">
+                  <i class="bi bi-alarm-fill"></i>
+                </div>
+                <div class="card-body">
+                  <h4>Last Comm Time</h4>
+                  <h2>13:25PM</h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md">
+              <div class="card-each">
+                <div class="card-icon">
+                  <i class="bi bi-lightning-fill"></i>
+                </div>
+                <div class="card-body">
+                  <h4>Current Load</h4>
+                  <h2>2,34KW</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="meterReadBox">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xxl-4">
+              <div class="meterBoxEach">
+                <h4 class="middle-subhead">Meter Information</h4>
+                <ul class="meter-list">
+                  <li>Meter ID <span> 00719005 </span></li>
+                  <li>Consumer <span> Sarita Singh </span></li>
+                  <li>Address <span> 124, Anand Vihar, Delhi </span></li>
+                  <li>Meter Type <span> Smart </span></li>
+                  <li>Model <span> X1-400 </span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xxl-4">
+              <div class="meterBoxEach">
+                <h4 class="middle-subhead">Current Readings</h4>
+                <ul class="meter-list">
+                  <li>Active Power <span>3.52 kW</span></li>
+                  <li>Voltage <span>230.8 V</span></li>
+                  <li>Current <span>15.27 A</span></li>
+                  <li>Power Factor <span>0.96</span></li>
+                  <li>Energy <span>7564,3</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xxl-4">
+              <div class="meterBoxEach">
+                <h4 class="middle-subhead">Events</h4>
+                <ul class="meter-list">
+                  <li>Voltage Sag <span>04-03-2024</span></li>
+                  <li>MD Exceeded <span>04-03-2024</span></li>
+                  <li>Power Outage <span>04-03-2024</span></li>
+                  <li><a href="#">View All</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="meterReadCharts">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xxl-6">
+              <div id="loadProfile"></div>
+            </div>
+            <div class="col-xxl-6">
+              <div id="consumptionChart"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="meterReadTable">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xxl-12">
+              <div class="meterReadTableTab">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                      data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                      aria-selected="true">Meter Reads</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                      data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                      aria-selected="false">Estimated
+                      Reads</button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                    aria-labelledby="pills-home-tab" tabindex="0">
+                    <div class="tableIndex">
+                      <div class="table-responsive">
+                        <table id="meterReadsTable" class="display">
+                          <thead>
+                            <tr>
+                              <th>Date & Time</th>
+                              <th>Status</th>
+                              <th>Reading</th>
+                              <th>Consumption</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                    tabindex="0">
+                    <div class="tableIndex">
+                      <div class="table-responsive">
+                        <table id="estimatedReadsTable" class="display">
+                          <thead>
+                            <tr>
+                              <th>Date & Time</th>
+                              <th>Status</th>
+                              <th>Reading</th>
+                              <th>Consumption (kwh)</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+                            <tr>
+                              <td>April 26, 2025, 1:41:30</td>
+                              <td>Successful</td>
+                              <td>1245.5 kw</td>
+                              <td>0.8 kwh</td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!--Footer-->
+      <section class="footer">
+        <p><i class="fa-regular fa-copyright"></i> Copyright
+          <script>document.write(new Date().getFullYear());</script>. All Rights Reserved. Empowered by
+          <a href="https://cloud4things.com/" target="_blank">Cloud4Things Technologies Pvt. Ltd</a>
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+
+  <!--Jquery-->
+  <script src="js/jquery.min.js"></script>
+
+  <!--Custom JS-->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/popper.min.js"></script>
+
+  <!--Data Table JS-->
+  <script src="js/dataTables.min.js"></script>
+
+  <!--Wow-JS-->
+  <script src="js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+
+</body>
+
+</html>

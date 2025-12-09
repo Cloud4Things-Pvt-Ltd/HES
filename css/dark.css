@@ -1,0 +1,234 @@
+/*-----------------------------------------------------------------------------------
+
+Template Name: Cloud4Things HES
+Author: Satakshi Datta 
+
+-----------------------------------------------------------------------------------*/
+@charset "utf-8";
+
+/* CSS Document */
+body.dark {
+    background-color: #020618 !important;
+
+    #outageMap svg rect {
+        fill: #0F172B;
+    }
+
+    .topbar {
+        background: #0F172B;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        backdrop-filter: none;
+    }
+
+    div#user-btn a {
+        color: #fff;
+    }
+
+    h4.dash-head {
+        font-weight: 500;
+        color: #fff;
+    }
+
+    .top-cards .card-each {
+        background: #0F172B;
+        box-shadow: none;
+    }
+
+    .top-cards .card-body h4 {
+        color: #b4b4b4;
+    }
+
+    .top-cards .card-body h2 {
+        color: #cecece;
+    }
+
+    .sidebar {
+        background: #0F172B;
+    }
+
+    .nav-link.sidebar-link {
+        color: #c9c9c9;
+    }
+
+    .middle-card-each {
+        background: #0F172B;
+        box-shadow: none;
+    }
+
+    a.nav-link.sidebar-link.active .label {
+        color: #fff;
+    }
+
+    h4.middle-subhead {
+        color: #adadad;
+    }
+
+    div#energyConsumption svg rect {
+        fill: #0F172B;
+    }
+
+    .highcharts-yaxis-labels text {
+        fill: #FFFFFF;
+    }
+
+    .notification-list {
+        background-color: #0F172B;
+    }
+
+    .notification-item div.title {
+        color: #b7b7b7;
+    }
+
+    .notification-item {
+        border-bottom: 1px solid #3f3f3f;
+    }
+
+    .highcharts-title,
+    .highcharts-subtitle,
+    .highcharts-axis-labels text,
+    .highcharts-legend-item text,
+    .highcharts-data-label text {
+        fill: #FFFFFF !important;
+    }
+
+    .highcharts-tooltip {
+        color: #FFFFFF !important;
+        background: #000000;
+        stroke: #FFFFFF;
+    }
+
+    #my-chart-container .highcharts-axis-labels text {
+        fill: #FFFFFF !important;
+    }
+
+    .transformer-id {
+        color: #afafaf;
+    }
+
+    .progress-bar-wrapper {
+        background-color: #6d6d6d;
+    }
+
+    div#demandSupply svg rect {
+        fill: #0F172B !important;
+    }
+
+    section.footer p {
+        color: #fff;
+    }
+
+    .capacity-percent {
+        color: #fff;
+    }
+
+    .commandEach {
+        background: #0F172B;
+        box-shadow: none;
+    }
+
+    .commandEach h4 {
+        color: #b5b5b5;
+    }
+
+    .commandEach h2 {
+        color: #fff;
+    }
+
+    div#pendingCommands svg rect {
+        fill: #0F172B;
+    }
+
+    .tableIndex {
+        background: #0F172B;
+        box-shadow: none;
+    }
+
+    .tableIndex table thead {
+        background: #222d43;
+        color: #bababa;
+    }
+
+    .tableIndex table.dataTable {
+        border: 1px solid #3a3a3a;
+    }
+
+    .tableIndex table tbody tr td {
+        color: #b4b4b4;
+    }
+
+    .tableIndex table tbody tr:nth-child(even) {
+        background: #292c35;
+    }
+
+    .apexcharts-text {
+        fill: #ffffff !important;
+        /* Axis labels, legend text, etc. */
+    }
+
+    .apexcharts-legend-text {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+    }
+
+    .apexcharts-xaxis text,
+    .apexcharts-yaxis text {
+        fill: #ffffff !important;
+    }
+
+    .apexcharts-tooltip {
+        color: #ffffff !important;
+    }
+
+    .apexcharts-tooltip-title {
+        color: #ffffff !important;
+    }
+
+    /* Grid lines optional */
+    .apexcharts-gridline {
+        stroke: #444 !important;
+    }
+
+    .apexcharts-tooltip {
+        background: #000 !important;
+        /* Black background */
+        color: #fff !important;
+        /* White text */
+        border: 1px solid #444 !important;
+    }
+
+    .apexcharts-tooltip-title {
+        background: #000 !important;
+        /* Black title background */
+        color: #fff !important;
+        /* White title text */
+        border-bottom: 1px solid #444 !important;
+    }
+
+    .apexcharts-tooltip-text,
+    .apexcharts-tooltip-series-group,
+    .apexcharts-tooltip-marker {
+        color: #fff !important;
+        /* All tooltip text white */
+    }
+
+    .apexcharts-tooltip-marker {
+        border: 1px solid #fff !important;
+    }
+
+
+    div.dt-container .dt-search input {
+        border: none;
+        background-color: #222d43;
+        color: #ccc;
+    }
+
+    .dt-search label {
+        color: #ccc;
+    }
+
+    div.dt-container select.dt-input {
+        padding: 4px;
+        background: #212c42 !important;
+        color: #cecece;
+    }
+}
