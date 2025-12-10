@@ -652,6 +652,67 @@ var treeOptions = {
 };
 new ApexCharts(document.querySelector('#feeder-treemap'), treeOptions).render();
 
+
+
+//Progress Circle for Missing Reads Trend
+// Set your target percentages here
+const targets = [70, 45];
+
+const circles = [
+  { circle: document.getElementById("circle1"), value: document.getElementById("value1") },
+  { circle: document.getElementById("circle2"), value: document.getElementById("value2") }
+];
+
+let progress = [0, 0];   // Start values for both circles
+let speed = 20;          // Animation speed
+
+let animate = setInterval(() => {
+
+  circles.forEach((item, index) => {
+    if (progress[index] < targets[index]) {
+      progress[index]++;
+
+      item.value.textContent = `${progress[index]}%`;
+
+      item.circle.style.background = `conic-gradient(
+        var(--primary) ${progress[index] * 3.6}deg,
+        #ddd ${progress[index] * 3.6}deg
+      )`;
+    }
+  });
+
+  // Stop interval when both circles reach their targets
+  if (progress[0] === targets[0] && progress[1] === targets[1]) {
+    clearInterval(animate);
+  }
+
+}, speed);
+
+
+
+
+//Date Range Picker for Missing Reads Trend
+
+$(function () {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function (start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+
+function formatDate(date) {
+  let mm = String(date.getMonth() + 1).padStart(2, '0');
+  let dd = String(date.getDate()).padStart(2, '0');
+  let yyyy = date.getFullYear();
+  return `${mm}/${dd}/${yyyy}`;
+}
+
+let today = new Date();
+let last7 = new Date();
+last7.setDate(today.getDate() - 7);
+
+document.getElementById("daterange").value = formatDate(last7) + " - " + formatDate(today);
   </script>
   <script>
     new WOW().init();

@@ -621,6 +621,86 @@ const consumerOptions = {
 };
 
 new ApexCharts(document.querySelector("#consumerTypeChart"), consumerOptions).render();
+
+
+
+// -------- Chart 1 --------
+var options1 = {
+  chart: {
+    type: "line",
+    height: 220,
+    toolbar: { show: false },
+    zoom: { enabled: false }
+  },
+  series: [{
+    name: "Revenue",
+    data: [6, 6.5, 6.1, 7.2, 7.8, 6.9, 6.2, 6.8, 7.3, 6.9, 7.6, 6.4]
+  }],
+  stroke: { width: 3, curve: "smooth" },
+  colors: ["#1A73E8"],
+  xaxis: {
+    categories: ["Last 30 days", "1 Apr", "2 Apr", "3 Apr", "4 Apr", "5 Apr", "6 Apr", "7 Apr", "8 Apr", "9 Apr", "10 Apr"],
+    labels: { style: { fontSize: "12px" } },
+    tooltip: { enabled: false }
+  },
+  yaxis: {
+    min: 3,
+    max: 10,
+    tickAmount: 3,
+    decimalsInFloat: 0,
+    labels: {
+      formatter: val => "₹" + Math.round(val)   // <- rounds values
+    }
+  },
+  grid: {
+    borderColor: "#eaeaea",
+    strokeDashArray: 4
+  },
+  markers: { size: 0 }
+};
+
+var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+chart1.render();
+
+// -------- Chart 2 --------
+var options2 = {
+  chart: {
+    type: "line",
+    height: 220,
+    toolbar: { show: false },
+    zoom: { enabled: false }
+  },
+  series: [{
+    name: "Revenue",
+    data: [7, 7.3, 7.1, 6.8, 6.5, 6.2, 6.7, 6.9, 6.8, 7.1]
+  }],
+  stroke: { width: 3, curve: "smooth" },
+  colors: ["#1A73E8"],
+  xaxis: {
+    categories: ["Last 30-days", "104 dgo"],
+    labels: { style: { fontSize: "12px" } },
+    tooltip: { enabled: false }
+  },
+  yaxis: {
+    min: 3,
+    max: 10,
+    tickAmount: 3,
+    decimalsInFloat: 0,
+    labels: {
+      formatter: val => "₹" + Math.round(val)   // <- rounds values
+    }
+  },
+  grid: {
+    borderColor: "#eaeaea",
+    strokeDashArray: 4
+  },
+  markers: { size: 0 }
+};
+
+var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+chart2.render();
+
+
   </script>
   <script>
     new WOW().init();

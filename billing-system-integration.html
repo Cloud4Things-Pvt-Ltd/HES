@@ -545,6 +545,63 @@ var barOptions2 = {
   colors: ["#1d4ed8"]
 };
 new ApexCharts(document.querySelector("#bar2"), barOptions2).render();
+
+//BillingImport
+var options = {
+  chart: {
+    type: 'donut',
+    height: 180
+  },
+
+  series: [98.4],
+  labels: [''],
+
+  plotOptions: {
+    pie: {
+      donut: {
+        size: '70%',
+        labels: {
+          show: true,
+          name: { show: false },
+          value: {
+            show: true,
+            fontSize: '22px',
+            fontWeight: 600,
+            formatter: (val) => val + "%"
+          }
+        }
+      }
+    }
+  },
+
+  colors: ['#67c17b'],   // green
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "light",
+      type: "diagonal1",
+      gradientToColors: ["#b9e5c7"],
+      stops: [0, 100]
+    }
+  },
+
+  stroke: {
+    width: 6,
+    colors: ["#e6f4ea"]
+  },
+
+  dataLabels: {
+    enabled: false
+  },
+
+  legend: {
+    show: false
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#billingImport"), options);
+chart.render();
+
   </script>
 
   <script>
