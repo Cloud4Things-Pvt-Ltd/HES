@@ -43,13 +43,10 @@ var options = {
   }
 };
 document.addEventListener("DOMContentLoaded", function () {
-  const chartDiv = document.querySelector("#pendingCommands");
-  if (chartDiv) {
-    new ApexCharts(chartDiv, options).render();
-  }
+  var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
+chart.render();
 });
-// var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
-// chart.render();
+
 
 //Load Profile
 
