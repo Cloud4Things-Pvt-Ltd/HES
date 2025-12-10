@@ -42,9 +42,14 @@ var options = {
     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
   }
 };
-
-var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
-chart.render();
+document.addEventListener("DOMContentLoaded", function () {
+  const chartDiv = document.querySelector("#pendingCommands");
+  if (chartDiv) {
+    new ApexCharts(chartDiv, options).render();
+  }
+});
+// var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
+// chart.render();
 
 //Load Profile
 
