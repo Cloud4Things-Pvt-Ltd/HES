@@ -8,7 +8,7 @@ Author: Satakshi Datta
 
 /* CSS Document */
 body.dark {
-    background-color: #020618 !important;
+    background-color: #292929 !important;
 
     #outageMap svg rect {
         fill: #0F172B;

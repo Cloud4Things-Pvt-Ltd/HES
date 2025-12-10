@@ -6,7 +6,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=2.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="Cloud4Things" />
-  <title>Cloud4Things HES - Bulk Command Execution</title>
+  <title>Cloud4Things HES - Duplicate Reads Dashboard</title>
 
   <!--Stylesheets-->
   <link rel="stylesheet" href="css/global.css" />
@@ -19,7 +19,7 @@
   <!-- Bootstrap 5 CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!--Font Awesome-->
+  <!--Font Awesome--> 
   <link rel="stylesheet" href="css/all.min.css">
   <link rel="stylesheet" href="css/fontawesome.min.css">
 
@@ -31,7 +31,7 @@
 
   <!--Datatables-->
   <link rel="stylesheet" href="css/datatables.min.css">
-<!--Highcharts-->
+  <!--Highcharts-->
   <script src="/js/highmaps.js"></script>
   <script src="/js/exporting.js"></script>
   <script src="/js/accessibility.js"></script>
@@ -39,6 +39,9 @@
 
   <!--Apexcharts-->
   <script src="/js/apexcharts.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
 
 </head>
 
@@ -165,8 +168,7 @@
               <div class="">Meter Read History</div>
             </a>
 
-            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i
-                class="bi bi-shield-lock"></i>
+            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Meter Configuration</div>
             </a>
 
@@ -174,9 +176,9 @@
         </div>
 
         <!-- Analytics -->
-        <div class="nav-item active">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
-            aria-controls="analytics" role="button">
+        <div class="nav-item">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics"
+            aria-expanded="false" aria-controls="analytics" role="button">
             <div class="icon"><i class="bi bi-compass"></i></div>
             <div class="label">Analytics</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -188,11 +190,13 @@
               <div class="">Event Overview</div>
             </a>
 
-            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Load Analytics</div>
             </a>
 
-            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Efficiency Analytics</div>
             </a>
           </div>
@@ -200,8 +204,8 @@
 
         <!-- Tamper -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
-            aria-controls="tamper" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper"
+            aria-expanded="false" aria-controls="tamper" role="button">
             <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
             <div class="label">Tamper</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -250,16 +254,16 @@
         </div>
 
         <!-- Data Read Category -->
-        <div class="nav-item">
-          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="data-read-category" aria-expanded="false"
-            aria-controls="data-read-category" role="button">
+        <div class="nav-item active">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="data-read-category"
+            aria-expanded="false" aria-controls="data-read-category" role="button">
             <div class="icon"><i class="bi bi-folder2-open"></i></div>
             <div class="label">Data Read Category</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
           </a>
 
           <div id="data-read-category" class="submenu" role="region" aria-hidden="true">
-            <a href="#" class="subitem d-flex align-items-center" role="link">
+            <a href="missing-reads.html" class="subitem d-flex align-items-center" role="link">
               <i class="bi bi-person-circle"></i>
               <div class="">Missing Reads Dashboard</div>
             </a>
@@ -344,157 +348,178 @@
 
     <!-- MAIN CONTENT -->
     <main id="main" class="content-wrap">
-      <h4 class="dash-head"> Bulk Command Execution <span class="sub-dash-head"><a href="index.html">Dashboard</a>
-          <i class="bi bi-arrow-right-short"></i> Tamper <i class="bi bi-arrow-right-short"></i> Bulk Command
-          Execution</span>
+      <h4 class="dash-head"></h4>
+      <h4 class="dash-head"> Duplicate Reads Dashboard <span class="sub-dash-head"><a href="index.html">Dashboard</a> <i
+            class="bi bi-arrow-right-short"></i> Data Read Category <i class="bi bi-arrow-right-short"></i> Duplicate
+          Reads Dashboard</span>
       </h4>
 
-      <section class="bulkCommandExceution">
+      <section class="duplicateReadsDash">
         <div class="container-fluid">
+          <!-- Filters -->
+          <div class="row mb-3 align-items-center filter-row">
+            <div class="col-auto">
+              <select class="form-select form-select-sm">
+                <option>All States</option>
+                <option>State A</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <select class="form-select form-select-sm">
+                <option>All Circles</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <select class="form-select form-select-sm">
+                <option>All Divisions</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <select class="form-select form-select-sm">
+                <option>All Subdivisions</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <select class="form-select form-select-sm">
+                <option>All Substations</option>
+              </select>
+            </div>
+
+            <div class="col-auto ms-auto">
+              <button class="btn btn-outline-secondary btn-sm">Reset</button>
+            </div>
+          </div>
+
+          <!-- KPI row -->
+          <div class="row g-3 mb-3">
+            <div class="col-sm-6 col-md-3">
+              <div class="kpi-card">
+                <div class="kpi-value">15.2k</div>
+                <div class="kpi-label">Total Duplicate Reads</div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="kpi-card">
+                <div class="kpi-value">8.7%</div>
+                <div class="kpi-label">2 Day Avg Duplicate Rate</div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="kpi-card">
+                <div class="kpi-value">10</div>
+                <div class="kpi-label">High-Impact DT/Feeders</div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="kpi-card">
+                <div class="kpi-value">96%</div>
+                <div class="kpi-label">Resolution Rate</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main content -->
           <div class="row">
-            <div class="col-xxl-8">
-              <div class="card card-left p-3">
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                  <div class="d-flex gap-2 align-items-center filters-row">
-                    <div>
-                      <label class="form-label mb-0 small">Filters</label>
-                      <select id="feedFilter" class="form-select">
-                        <option value="all">Rural Feeder Meters</option>
-                        <option value="Rural Feeder 4">Rural Feeder 4</option>
-                        <option value="Rural Feeder 5">Rural Feeder 5</option>
-                        <option value="Rural Feeder 6">Rural Feeder 6</option>
-                      </select>
-                    </div>
+            <!-- Left large column -->
+            <div class="col-lg-8">
+              <div class="card-section">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="small-title">Duplicate Reads Trend</div>
+                  <div class="text-muted">Apr 1 - Apr 30</div>
+                </div>
+                <div id="trendChart" style="height:280px;"></div>
+              </div>
 
-                    <div>
-                      <label class="form-label mb-0 small">Command Type</label>
-                      <select id="topCommandType" class="form-select">
-                        <option value="--">--</option>
-                        <option value="Remote Reconnect">Remote Reconnect</option>
-                        <option value="Remote Disconnect">Remote Disconnect</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="text-end">
-                    <small class="text-muted">Showing meters</small>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card-section">
+                    <div class="small-title">Timestamp Correlation View</div>
+                    <div id="scatterChart" style="height:220px"></div>
                   </div>
                 </div>
-              </div>
-              <div class="tableIndex">
-                <div class="table-responsive">
-                  <table id="eventOverview" class="display">
-                    <thead>
-                      <tr>
-                        <th>Meter ID</th>
-                        <th>Consumer Name</th>
-                        <th>Feed</th>
-                        <th>DT Code</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>T132400001249</td>
-                        <td>Amit Kumar</td>
-                        <td>Rural Feeder 5</td>
-                        <td>DL45902</td>
-                        <td class="text-success fw-semibold">On</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001241</td>
-                        <td>Anjara Kumar</td>
-                        <td>Rural Feeder 6</td>
-                        <td>DL45902</td>
-                        <td class="text-danger fw-semibold">Off</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001249</td>
-                        <td>Vishand Kumar</td>
-                        <td>Rural Feeder 4</td>
-                        <td>DL45902</td>
-                        <td class="text-danger fw-semibold">Off</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001251</td>
-                        <td>Raju Kumar</td>
-                        <td>Rural Feeder 5</td>
-                        <td>DL45902</td>
-                        <td class="text-success fw-semibold">On</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001252</td>
-                        <td>Bond Kumar</td>
-                        <td>Rural Feeder 6</td>
-                        <td>DL45902</td>
-                        <td class="text-danger fw-semibold">Off</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001255</td>
-                        <td>Feresh Shanm</td>
-                        <td>Rural Feeder 5</td>
-                        <td>DL45902</td>
-                        <td class="text-success fw-semibold">On</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001259</td>
-                        <td>Jenk Rahman</td>
-                        <td>Rural Feeder 6</td>
-                        <td>DL45902</td>
-                        <td class="text-danger fw-semibold">Off</td>
-                      </tr>
-                      <tr>
-                        <td>T132400001261</td>
-                        <td>Valsnav Kumar</td>
-                        <td>Rural Feeder 5</td>
-                        <td>DL45902</td>
-                        <td class="text-danger fw-semibold">Off</td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+                <div class="col-md-6">
+                  <div class="card-section">
+                    <div class="small-title">Meter-Wise Duplicates</div>
+                    <div id="meterBarChart" style="height:220px"></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-xxl-4">
-              <div class="card p-3 command-card">
-                <h5 class="mb-3">Command Execution</h5>
 
-                <div class="mb-3">
-                  <label class="form-label small">Command Type</label>
-                  <select id="commandType" class="form-select">
-                    <option value="Remote Reconnect">Remote Reconnect</option>
-                    <option value="Remote Disconnect">Remote Disconnect</option>
-                    <option value="Meter Reset">Meter Reset</option>
-                  </select>
+            <!-- Right column -->
+            <div class="col-lg-4">
+              <div class="card-section mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="small-title">Root-Cause Distribution</div>
+                  <div class="text-muted small">Top reasons</div>
                 </div>
 
-                <div class="mb-3">
-                  <label class="form-label small">Selected Meters</label>
-                  <select id="selectedPreset" class="form-select">
-                    <option value="Rural Feeder Meters">Rural Feeder Meters</option>
-                    <option value="All Meters">All Meters</option>
-                    <option value="Feeder 5">Feeder 5</option>
-                  </select>
-                  <div class="mt-2"><small id="selectedCount">10 meters selected</small></div>
+                <div id="pieChart" style="height:200px"></div>
+
+                <div class="mt-2">
+                  <div class="d-flex align-items-center mb-1"><span class="legend-dot"
+                      style="background:#3b82f6"></span> <small>Network Issue <strong class="ms-2">45%</strong></small>
+                  </div>
+                  <div class="d-flex align-items-center mb-1"><span class="legend-dot"
+                      style="background:#facc15"></span> <small>Minor Times <strong class="ms-2">26%</strong></small>
+                  </div>
+                  <div class="d-flex align-items-center mb-1"><span class="legend-dot"
+                      style="background:#6b7280"></span> <small>Bashand Collision <strong
+                        class="ms-2">26%</strong></small></div>
+                  <div class="d-flex align-items-center mb-1"><span class="legend-dot"
+                      style="background:#60a5fa"></span> <small>Invalid Timestamp <strong
+                        class="ms-2">3%</strong></small></div>
+                </div>
+              </div>
+
+              <div class="card-section">
+                <div class="small-title">Data Pipeline Patterns</div>
+
+                <div class="pipeline-label">
+                  <div>Ingestion</div>
+                  <div>85%</div>
+                </div>
+                <div class="pipeline-bar mb-3">
+                  <div class="fill" style="width:85%; background:#3b82f6"></div>
                 </div>
 
-
-                <div class="d-flex gap-2">
-                  <button id="clearBtn" class="btn btn-light w-50">Clear All</button>
-                  <button id="execBtn" class="btn btn-exec w-50">Execute Command</button>
+                <div class="pipeline-label">
+                  <div>Validation</div>
+                  <div>60%</div>
+                </div>
+                <div class="pipeline-bar mb-3">
+                  <div class="fill" style="width:60%; background:#60a5fa"></div>
                 </div>
 
-                <div id="execAlert" class="alert alert-success mt-3 d-none" role="alert">
-                  Command executed for 0 meters.
+                <div class="pipeline-label">
+                  <div>Processing</div>
+                  <div>35%</div>
+                </div>
+                <div class="pipeline-bar mb-3">
+                  <div class="fill" style="width:35%; background:#34d399"></div>
                 </div>
 
+                <div class="pipeline-label">
+                  <div>Storage</div>
+                  <div>18%</div>
+                </div>
+                <div class="pipeline-bar mb-3">
+                  <div class="fill" style="width:18%; background:#f97316"></div>
+                </div>
+
+                <div class="pipeline-label">
+                  <div>Distribution</div>
+                  <div>8%</div>
+                </div>
+                <div class="pipeline-bar">
+                  <div class="fill" style="width:8%; background:#a78bfa"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-
 
       <!--Footer-->
       <section class="footer">
@@ -524,6 +549,10 @@
 
 
 
+
+  <!--Datepicker Range-->
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
   <!--Wow-JS-->
   <script src="js/wow.min.js"></script>

@@ -279,7 +279,7 @@ p {
 }
 
 body {
-    background-color: #F8F9FB !important;
+    background-color: #F0F0F5 !important;
     color: var(--bz-color-common-black);
     font-size: var(--bz-fs-body);
     font-weight: 400;

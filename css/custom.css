@@ -819,7 +819,10 @@ section.eventOverviewCharts svg text {
     font-family: 'Google Sans Flex' !important;
 }
 
-div#areaTrend, #eventFeederCount, #loadCurveChart, #feederLChart{
+div#areaTrend,
+#eventFeederCount,
+#loadCurveChart,
+#feederLChart {
     background: #fff;
     padding: 15px 10px;
     margin: 30px 12px 0 0;
@@ -827,6 +830,7 @@ div#areaTrend, #eventFeederCount, #loadCurveChart, #feederLChart{
     border-radius: 10px;
     box-shadow: 0 0 9px #efefef;
 }
+
 section.eventOverviewTables {
     margin: 30px 0 10px;
 }
@@ -835,6 +839,7 @@ section.eventOverviewTables {
 /*****LOAD ANALYTICS*****/
 .LoadThirdpart {
     margin: 30px 0;
+
     .card {
         border-radius: 14px;
         border: none;
@@ -1137,4 +1142,399 @@ section.eventOverviewTables {
     font-size: 22px;
     font-weight: bold;
     position: absolute;
+}
+
+.trendMaps,
+.rightFeederMap,
+.rightFeederBottom {
+    background: #fff;
+    padding: 20px 30px;
+    margin: 30px 12px 30px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 9px #efefef;
+}
+
+h4.middle-subhead span input {
+    background: #f2f2f2;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #686868;
+}
+
+.rightFeederBottom .card {
+    border: none;
+}
+
+
+/****Duplicate Reads Dashboard ************/
+.duplicateReadsDash {
+    .filter-row .form-select {
+        min-width: 160px;
+    }
+
+    .kpi-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .kpi-value {
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    .kpi-label {
+        color: #6b7280;
+        font-size: 0.85rem;
+    }
+
+    .card-section {
+        background: #fff;
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+        margin-bottom: 18px;
+    }
+
+    .small-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    /* make charts look tidy inside cards */
+    .chart-card {
+        padding: 12px;
+    }
+
+    /* Pie legend small colors */
+    .legend-dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+
+    .pipeline-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        color: #374151;
+    }
+
+    .pipeline-bar {
+        height: 10px;
+        background: #e6e9f2;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    .pipeline-bar>.fill {
+        height: 100%;
+        border-radius: 999px;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .duplicateReadsDash .filter-row .form-select {
+        min-width: 120px;
+        margin-bottom: 8px;
+    }
+}
+
+/* ---------- AT&C LOSS ---------- */
+
+.funnel-box {
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+}
+
+.funnel-shape .apexcharts-bar {
+    rx: 20px;
+    ry: 20px;
+}
+
+/* Create tapered funnel effect */
+.funnel-shape .apexcharts-series:nth-child(1) .apexcharts-bar-area {
+    transform: scaleX(1);
+}
+
+.funnel-shape .apexcharts-series:nth-child(2) .apexcharts-bar-area {
+    transform: scaleX(0.90);
+}
+
+.funnel-shape .apexcharts-series:nth-child(3) .apexcharts-bar-area {
+    transform: scaleX(0.75);
+}
+
+.funnel-shape .apexcharts-series:nth-child(4) .apexcharts-bar-area {
+    transform: scaleX(0.60);
+}
+
+
+.loss-box {
+    max-width: 320px;
+}
+
+.loss-box h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.loss-row {
+    margin-bottom: 16px;
+    display: flex;
+}
+
+.loss-row span {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.bar-bg {
+    width: 100px;
+    height: 12px;
+    background: #d9e1e8;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #1e3a56;
+    /* Dark navy */
+    border-radius: 6px 0 0 6px;
+}
+
+/* ---------- Billing Integration ---------- */
+
+.sync-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sync-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sync-dot {
+    width: 20px;
+    height: 20px;
+    background: #d8f5d8;
+    border-radius: 50%;
+    margin-bottom: 6px;
+}
+
+.sync-info .label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+}
+
+.sync-info .date {
+    font-size: 14px;
+    color: #444;
+}
+
+.flow-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-family: Arial, sans-serif;
+}
+
+.box {
+    padding: 15px 30px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+.arrow,
+.down-arrow {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.down-arrow {
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+}
+
+
+/* ---------- MDMS Sync Dashboard ---------- */
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 1px 0 rgba(45, 55, 72, 0.03);
+    min-height: 90px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.stat-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* Process flow boxes */
+.flow {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 18px 4px;
+}
+
+.flow-box {
+    min-width: 120px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--box-bg);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(9, 35, 60, 0.12);
+    position: relative;
+    margin-right: 6px;
+    flex: 0 0 auto;
+}
+
+.flow-arrow {
+    width: 28px;
+    height: 2px;
+    background: #9fb9d6;
+    position: relative;
+    margin: 0 6px;
+    flex: 0 0 auto;
+}
+
+.flow-arrow:after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: -5px;
+    border-left: 8px solid #9fb9d6;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+
+.flow-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.card-ghost {
+    background: white;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 18px rgba(16, 24, 40, 0.06);
+}
+
+/* Chart card spacing */
+.chart-card {
+    min-height: 260px;
+}
+
+/* small badges for % delta */
+.delta-up {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.delta-down {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* make numbers bigger on small screens */
+@media (max-width:768px) {
+    .stat-number {
+        font-size: 22px;
+    }
+
+    .page-title {
+        font-size: 22px;
+    }
+
+    .flow {
+        gap: 12px
+    }
+
+    .flow-box {
+        min-width: 100px;
+        height: 50px;
+        font-size: 14px
+    }
+}
+
+
+/* ---------- Login ---------- */
+
+.logo img {
+    width: 170px;
+}
+
+.oxyy-login-register form input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: none;
+    border-radius: 0;
+    color: #000;
+    padding: 15px 0;
+}
+.oxyy-login-register form input:focus {
+    box-shadow: none;
+    border-color: var(--primary);
+}
+
+.oxyy-login-register a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.oxyy-login-register p {
+    margin: 0;
+    background: #000;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+}
+.oxyy-login-register p a{
+    color: #fff;
 }

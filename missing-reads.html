@@ -31,7 +31,7 @@
 
   <!--Datatables-->
   <link rel="stylesheet" href="css/datatables.min.css">
-<!--Highcharts-->
+  <!--Highcharts-->
   <script src="/js/highmaps.js"></script>
   <script src="/js/exporting.js"></script>
   <script src="/js/accessibility.js"></script>
@@ -177,8 +177,8 @@
 
         <!-- Analytics -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
-            aria-controls="analytics" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics"
+            aria-expanded="false" aria-controls="analytics" role="button">
             <div class="icon"><i class="bi bi-compass"></i></div>
             <div class="label">Analytics</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -190,11 +190,13 @@
               <div class="">Event Overview</div>
             </a>
 
-            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Load Analytics</div>
             </a>
 
-            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Efficiency Analytics</div>
             </a>
           </div>
@@ -202,8 +204,8 @@
 
         <!-- Tamper -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
-            aria-controls="tamper" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper"
+            aria-expanded="false" aria-controls="tamper" role="button">
             <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
             <div class="label">Tamper</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -346,7 +348,11 @@
 
     <!-- MAIN CONTENT -->
     <main id="main" class="content-wrap">
-      <h4 class="dash-head">Missing Reads Dashboard</h4>
+      <h4 class="dash-head"></h4>
+      <h4 class="dash-head"> Missing Reads Dashboard <span class="sub-dash-head"><a href="index.html">Dashboard</a> <i
+            class="bi bi-arrow-right-short"></i> Data Read Category <i class="bi bi-arrow-right-short"></i> Missing
+          Reads Dashboard</span>
+      </h4>
 
       <section class="misingReads">
         <div class="container-fluid">
@@ -397,52 +403,49 @@
                     <h4 class="middle-subhead">Missing Reads Root Cause</h4>
                     <div class="readRootItem">
                       <div class="readRootTxt">
-                        <h4>Communication Failure</h4>
+                        <h4>Communication Failure <span>56.8 %</span></h4>
                       </div>
                       <div class="progress-container">
                         <div class="progress-bar-wrapper">
                           <div class="progress-bar" style="width: 56.8%;"></div>
                         </div>
                       </div>
-                      <div class="readRootPercent">56.8 %</div>
                     </div>
                     <div class="readRootItem">
                       <div class="readRootTxt">
-                        <h4>Device Malfunction</h4>
+                        <h4>Device Malfunction <span>33%</span></h4>
                       </div>
                       <div class="progress-container">
                         <div class="progress-bar-wrapper">
                           <div class="progress-bar" style="width: 33%;"></div>
                         </div>
                       </div>
-                      <div class="readRootPercent">33 %</div>
                     </div>
                     <div class="readRootItem">
                       <div class="readRootTxt">
-                        <h4>Network Issue</h4>
+                        <h4>Network Issue <span>87.1%</span></h4>
                       </div>
                       <div class="progress-container">
                         <div class="progress-bar-wrapper">
                           <div class="progress-bar" style="width: 87.1%;"></div>
                         </div>
                       </div>
-                      <div class="readRootPercent">87.1 %</div>
                     </div>
                     <div class="readRootItem">
                       <div class="readRootTxt">
-                        <h4>Others</h4>
+                        <h4>Others <span>34%</span></h4>
                       </div>
                       <div class="progress-container">
                         <div class="progress-bar-wrapper">
                           <div class="progress-bar" style="width: 34%;"></div>
                         </div>
                       </div>
-                      <div class="readRootPercent">34 %</div>
                     </div>
                   </div>
                 </div>
                 <div class="col-xxl-6">
-                  <h4 class="middle-subhead">Communication / Network <span class="float-right">Top Root Cause</span></h4>
+                  <h4 class="middle-subhead">Communication / Network <span class="float-right">Top Root Cause</span>
+                  </h4>
                   <div class="progress-container1">
                     <div class="progress-circle" id="circle1">
                       <span class="progress-value" id="value1">0%</span>
@@ -457,7 +460,74 @@
 
             </div>
             <div class="col-xxl-4">
+              <div class="rightFeederMap">
+                <h4 class="middle-subhead">Feeder / DT Heatmap</h4>
+                <div id="feeder-treemap" style="height:180px;"></div>
+              </div>
+              <div class="rightFeederBottom">
+                <!-- Meter Section -->
+                <div class="card">
+                  <h6 class="fw-bold mb-3">Meter redifretus</h6>
 
+                  <!-- Meter Row Template -->
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                      <span class="meter-ID">2914966759</span>
+                      <span class="fw-semibold">364</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-primary" style="width: 95%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                      <span class="meter-ID">4533721996</span>
+                      <span class="fw-semibold">337</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-primary" style="width: 88%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                      <span class="meter-ID">3774450281</span>
+                      <span class="fw-semibold">315</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-primary" style="width: 82%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                      <span class="meter-ID">5811230537</span>
+                      <span class="fw-semibold">291</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-primary" style="width: 76%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="">
+                    <div class="d-flex justify-content-between">
+                      <span class="meter-ID">7569742103</span>
+                      <span class="fw-semibold">247</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-primary" style="width: 65%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Root Causes -->
+                <div class="card">
+                  <h6 class="fw-bold mb-3">Top Root Causes <span class="float-end text-danger">10 Critical</span></h6>
+                  <p>Communication <span class="float-end text-danger-emphasis">14 Major</span></p>
+                  <p>Signal Interfarence <span class="float-end text-success">8 Minor</span></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -478,7 +548,7 @@
 
   <!--Jquery-->
   <script src="js/jquery.min.js"></script>
-
+<script src="js/tables.js"></script>
   <!--Custom JS-->
   <script src="js/custom.js"></script>
   <script src="js/custom1.js"></script>
@@ -489,6 +559,9 @@
 
   <!--Data Table JS-->
   <script src="js/dataTables.min.js"></script>
+
+
+
 
   <!--Datepicker Range-->
   <script type="text/javascript" src="js/moment.min.js"></script>

@@ -29,9 +29,13 @@
   <!--Animate-->
   <link rel="stylesheet" href="css/animate.min.css">
 
-  <!--Datatables-->
-  <link rel="stylesheet" href="css/dataTables.min.css">
-<!--Highcharts-->
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+  <!-- DataTables Buttons CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+
+  <!--Highcharts-->
   <script src="/js/highmaps.js"></script>
   <script src="/js/exporting.js"></script>
   <script src="/js/accessibility.js"></script>
@@ -39,7 +43,7 @@
 
   <!--Apexcharts-->
   <script src="/js/apexcharts.js"></script>
-  
+
 </head>
 
 <body>
@@ -160,11 +164,13 @@
               <div class="">Meter Command Console</div>
             </a>
 
-            <a href="meter-read-history.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-read-history.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Read History</div>
             </a>
 
-            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Configuration</div>
             </a>
 
@@ -173,8 +179,8 @@
 
         <!-- Analytics -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
-            aria-controls="analytics" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics"
+            aria-expanded="false" aria-controls="analytics" role="button">
             <div class="icon"><i class="bi bi-compass"></i></div>
             <div class="label">Analytics</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -186,11 +192,13 @@
               <div class="">Event Overview</div>
             </a>
 
-            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Load Analytics</div>
             </a>
 
-            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Efficiency Analytics</div>
             </a>
           </div>
@@ -198,8 +206,8 @@
 
         <!-- Tamper -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
-            aria-controls="tamper" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper"
+            aria-expanded="false" aria-controls="tamper" role="button">
             <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
             <div class="label">Tamper</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -342,7 +350,9 @@
 
     <!-- MAIN CONTENT -->
     <main id="main" class="content-wrap">
-      <h4 class="dash-head"> Meter Command Console <span class="sub-dash-head"><a href="index.html">Dashboard</a> <i class="bi bi-arrow-right-short"></i> Meters <i class="bi bi-arrow-right-short"></i> Meter Command Console</span></h4>
+      <h4 class="dash-head"> Meter Command Console <span class="sub-dash-head"><a href="index.html">Dashboard</a> <i
+            class="bi bi-arrow-right-short"></i> Meters <i class="bi bi-arrow-right-short"></i> Meter Command
+          Console</span></h4>
 
       <section class="commandConsole">
         <div class="container-fluid p-0">
@@ -404,8 +414,8 @@
               <h4 class="middle-subhead">Command Queue</h4>
               <div class="tableIndex">
                 <div class="table-responsive">
-                  <table id="commandQueue" class="display">
-                    <thead>
+                  <table class="table tableMain table-bordered">
+                    <thead class="table-secondary">
                       <tr>
                         <th>Meter ID</th>
                         <th>Command</th>
@@ -736,12 +746,12 @@
                         <td>Pending</td>
                         <td><a href="#"><i class="bi bi-eye-fill"></i> View</a></td>
                       </tr>
-                      
+
                     </tbody>
                   </table>
                 </div>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
       </section>
@@ -770,7 +780,15 @@
   <script src="js/popper.min.js"></script>
 
   <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- DataTables Buttons JS -->
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+
+  <!-- Column Visibility -->
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 
   <!--Wow-JS-->
   <script src="js/wow.min.js"></script>
