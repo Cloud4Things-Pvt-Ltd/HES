@@ -1,4 +1,50 @@
+//Pending Commands
+var options = {
+  series: [{
+    name: "Sent",
+    data: [10, 20, 15, 40, 20, 50, 30, 80, 150]
+  },
+  {
+    name: "Completed",
+    data: [22, 30, 25, 50, 40, 60, 70, 100, 200]
+  },
+  {
+    name: "Failed",
+    data: [44, 25, 20, 45, 30, 55, 60, 90, 120]
+  }
 
+  ],
+  colors: ["#0079fbff", "#0cd62eff", "#da0e0eff"],
+  chart: {
+    height: 350,
+    type: 'line',
+    zoom: {
+      enabled: false
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    curve: 'straight'
+  },
+  // title: {
+  //   text: 'Product Trends by Month',
+  //   align: 'left'
+  // },
+  grid: {
+    row: {
+      colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+      opacity: 0.5
+    },
+  },
+  xaxis: {
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
+chart.render();
 
 // ---------- Feeder treemap (used as 'heatmap') ----------
 var treeOptions = {
@@ -173,53 +219,7 @@ var chart = new ApexCharts(document.querySelector("#demandSupply"), options);
 chart.render();
 
 
-//Pending Commands
-var options = {
-  series: [{
-    name: "Sent",
-    data: [10, 20, 15, 40, 20, 50, 30, 80, 150]
-  },
-  {
-    name: "Completed",
-    data: [22, 30, 25, 50, 40, 60, 70, 100, 200]
-  },
-  {
-    name: "Failed",
-    data: [44, 25, 20, 45, 30, 55, 60, 90, 120]
-  }
 
-  ],
-  colors: ["#0079fbff", "#0cd62eff", "#da0e0eff"],
-  chart: {
-    height: 350,
-    type: 'line',
-    zoom: {
-      enabled: false
-    }
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    curve: 'straight'
-  },
-  // title: {
-  //   text: 'Product Trends by Month',
-  //   align: 'left'
-  // },
-  grid: {
-    row: {
-      colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-      opacity: 0.5
-    },
-  },
-  xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-  }
-};
-
-var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
-chart.render();
 
 
 //Load Profile
@@ -1144,115 +1144,115 @@ var barOptions2 = {
 new ApexCharts(document.querySelector("#bar2"), barOptions2).render();
 
 
- // Reconciliation Chart
-    new ApexCharts(document.querySelector("#reconChart"), {
-      chart: { type: "bar", height: 200 },
-      series: [{ name: "Transactions", data: [15, 20, 10, 25, 30] }],
-      xaxis: { categories: ["15 Apr", "16 Apr", "18 Apr", "19 Apr", "20 Apr"] }
-    }).render();
+// Reconciliation Chart
+new ApexCharts(document.querySelector("#reconChart"), {
+  chart: { type: "bar", height: 200 },
+  series: [{ name: "Transactions", data: [15, 20, 10, 25, 30] }],
+  xaxis: { categories: ["15 Apr", "16 Apr", "18 Apr", "19 Apr", "20 Apr"] }
+}).render();
 
-    // Daily Volume Chart
-    new ApexCharts(document.querySelector("#volumeChart"), {
-      chart: { type: "bar", height: 220 },
-      series: [{
-        data: [25, 55, 20, 15, 5, 40, 18]
-      }],
-      xaxis: { categories: ["<0%", "10%", "20%", "30%", "40%", "50%", "60%"] }
-    }).render();
+// Daily Volume Chart
+new ApexCharts(document.querySelector("#volumeChart"), {
+  chart: { type: "bar", height: 220 },
+  series: [{
+    data: [25, 55, 20, 15, 5, 40, 18]
+  }],
+  xaxis: { categories: ["<0%", "10%", "20%", "30%", "40%", "50%", "60%"] }
+}).render();
 
-    // Delay Histogram
-    new ApexCharts(document.querySelector("#delayChart"), {
-      chart: { type: "bar", height: 220 },
-      series: [{
-        data: [50, 30, 20, 10, 5, 2]
-      }],
-      xaxis: { categories: ["<20", "23", "40", "50", "60", ">50"] }
-    }).render();
+// Delay Histogram
+new ApexCharts(document.querySelector("#delayChart"), {
+  chart: { type: "bar", height: 220 },
+  series: [{
+    data: [50, 30, 20, 10, 5, 2]
+  }],
+  xaxis: { categories: ["<20", "23", "40", "50", "60", ">50"] }
+}).render();
 
 
-      // --- SYNC SUCCESS LINE CHART ---
-    var syncOptions = {
-      chart: {
-        type: 'line',
-        height: 260,
-        toolbar: { show: false },
-        zoom: { enabled: false },
-        sparkline: { enabled:false }
-      },
-      series: [{
-        name: 'Sync Success',
-        data: [88, 92, 93, 95, 97.8] // Tue, Thu, Sat, Mon etc
-      }],
-      stroke: {
-        curve: 'smooth',
-        width: 3
-      },
-      xaxis: {
-        categories: ['Tue','Thu','Sat','Sun','Mon'],
-        labels: {
-          style: { colors: '#6b7280' }
-        }
-      },
-      yaxis: {
-        labels: {
-          formatter: function (val) { return val + "%"; },
-          style: { colors: '#6b7280' }
-        },
-        min: 80, max: 100
-      },
-      markers: { size: 4 },
-      colors: ['#0b5ed7'],
-      tooltip: {
-        y: { formatter: function(val){ return val + "%"; } }
-      },
-      grid: {
-        strokeDashArray: 4,
-        borderColor: '#e6eef6'
-      },
-      legend: { show: false }
-    };
+// --- SYNC SUCCESS LINE CHART ---
+var syncOptions = {
+  chart: {
+    type: 'line',
+    height: 260,
+    toolbar: { show: false },
+    zoom: { enabled: false },
+    sparkline: { enabled: false }
+  },
+  series: [{
+    name: 'Sync Success',
+    data: [88, 92, 93, 95, 97.8] // Tue, Thu, Sat, Mon etc
+  }],
+  stroke: {
+    curve: 'smooth',
+    width: 3
+  },
+  xaxis: {
+    categories: ['Tue', 'Thu', 'Sat', 'Sun', 'Mon'],
+    labels: {
+      style: { colors: '#6b7280' }
+    }
+  },
+  yaxis: {
+    labels: {
+      formatter: function (val) { return val + "%"; },
+      style: { colors: '#6b7280' }
+    },
+    min: 80, max: 100
+  },
+  markers: { size: 4 },
+  colors: ['#0b5ed7'],
+  tooltip: {
+    y: { formatter: function (val) { return val + "%"; } }
+  },
+  grid: {
+    strokeDashArray: 4,
+    borderColor: '#e6eef6'
+  },
+  legend: { show: false }
+};
 
-    var syncChart = new ApexCharts(document.querySelector("#syncSuccessChart"), syncOptions);
-    syncChart.render();
+var syncChart = new ApexCharts(document.querySelector("#syncSuccessChart"), syncOptions);
+syncChart.render();
 
-    // --- PENDING vs REJECTED BAR CHART ---
-    var pendingRejectedOptions = {
-      chart: {
-        type: 'bar',
-        height: 260,
-        stacked: false,
-        toolbar: { show: false }
-      },
-      series: [
-        { name: 'Pending Reads', data: [160, 210, 130, 200, 240] },
-        { name: 'Rejected Reads', data: [90, 180, 230, 150, 260] }
-      ],
-      colors: ['#155bd3', '#b8c4cf'],
-      plotOptions: {
-        bar: {
-          horizontal: false, 
-          columnWidth: '50%',
-          borderRadius: 6
-        }
-      },
-      dataLabels: { enabled: false },
-      xaxis: {
-        categories: ['Tue', 'Sat', 'Tet', 'Mon'],
-        labels: { style: { colors: '#6b7280' } }
-      },
-      yaxis: {
-        labels: { style: { colors: '#6b7280' } },
-        title: { text: undefined }
-      },
-      legend: {
-        position: 'bottom',
-        horizontalAlign: 'center'
-      },
-      grid: { borderColor: '#e6eef6' }
-    };
+// --- PENDING vs REJECTED BAR CHART ---
+var pendingRejectedOptions = {
+  chart: {
+    type: 'bar',
+    height: 260,
+    stacked: false,
+    toolbar: { show: false }
+  },
+  series: [
+    { name: 'Pending Reads', data: [160, 210, 130, 200, 240] },
+    { name: 'Rejected Reads', data: [90, 180, 230, 150, 260] }
+  ],
+  colors: ['#155bd3', '#b8c4cf'],
+  plotOptions: {
+    bar: {
+      horizontal: false,
+      columnWidth: '50%',
+      borderRadius: 6
+    }
+  },
+  dataLabels: { enabled: false },
+  xaxis: {
+    categories: ['Tue', 'Sat', 'Tet', 'Mon'],
+    labels: { style: { colors: '#6b7280' } }
+  },
+  yaxis: {
+    labels: { style: { colors: '#6b7280' } },
+    title: { text: undefined }
+  },
+  legend: {
+    position: 'bottom',
+    horizontalAlign: 'center'
+  },
+  grid: { borderColor: '#e6eef6' }
+};
 
-    var pendingRejectedChart = new ApexCharts(document.querySelector("#pendingRejectedChart"), pendingRejectedOptions);
-    pendingRejectedChart.render();
+var pendingRejectedChart = new ApexCharts(document.querySelector("#pendingRejectedChart"), pendingRejectedOptions);
+pendingRejectedChart.render();
 
 /* ------------------------------
      BILLING SUCCESS RATE (LINE)
@@ -1327,17 +1327,17 @@ new ApexCharts(document.querySelector("#consumerTypeChart"), consumerOptions).re
 
 //Datatables
 $(document).ready(function () {
-      $('.tableMain').DataTable({
-        dom: 'Bfrtip',   // Buttons, search, pagination, entries count
-        buttons: [
-          {
-            extend: 'colvis',
-            className: 'btn btn-primary'
-          }
-        ],
-        pageLength: 10
-      });
-    });
+  $('.tableMain').DataTable({
+    dom: 'Bfrtip',   // Buttons, search, pagination, entries count
+    buttons: [
+      {
+        extend: 'colvis',
+        className: 'btn btn-primary'
+      }
+    ],
+    pageLength: 10
+  });
+});
 
 
 
