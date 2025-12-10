@@ -32,38 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
 
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
 </head>
 
@@ -200,8 +169,8 @@
 
         <!-- Analytics -->
         <div class="nav-item active">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
-            aria-controls="analytics" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics"
+            aria-expanded="false" aria-controls="analytics" role="button">
             <div class="icon"><i class="bi bi-compass"></i></div>
             <div class="label">Analytics</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -213,11 +182,13 @@
               <div class="">Event Overview</div>
             </a>
 
-            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Load Analytics</div>
             </a>
 
-            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Efficiency Analytics</div>
             </a>
           </div>
@@ -225,8 +196,8 @@
 
         <!-- Tamper -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
-            aria-controls="tamper" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper"
+            aria-expanded="false" aria-controls="tamper" role="button">
             <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
             <div class="label">Tamper</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -411,7 +382,7 @@
                 <h4>Auto-Resolved</h4>
                 <h1>497</h1>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
       </section>
@@ -475,7 +446,7 @@
           </div>
         </div>
       </section>
- 
+
       <section class="event-overview table">
         <div class="container-fluid">
           <div class="row">
@@ -562,7 +533,143 @@
   </div>
 
 
- 
+  <!-- ================== JS FILES ================== -->
+
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+
+  <script>
+    //event severity trend chart
+
+    var options = {
+      series: [{
+        name: "Critical",
+        data: [10, 41, 35, 51]
+      },
+      {
+        name: "Major",
+        data: [20, 22, 46, 66]
+      },
+      {
+        name: "Minor",
+        data: [30, 55, 88, 99]
+      },
+      {
+        name: "Pending",
+        data: [40, 60, 70, 80]
+      }
+      ],
+      chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      title: {
+        text: 'Event Severity Trend (Last 24 Hours)',
+        align: 'left'
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: ['Critical', 'Major', 'Minor', 'Pending'],
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#areaTrend"), options);
+    chart.render();
+
+    //Event count by feeder
+    var options = {
+      chart: {
+        type: 'bar',
+        height: 350,
+        stacked: true,
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          barHeight: '50%',
+          borderRadius: 4,
+        }
+      },
+      series: [
+        {
+          name: "Event Type 1",
+          data: [80, 60, 70, 55, 50]
+        },
+        {
+          name: "Event Type 2",
+          data: [40, 30, 35, 25, 20]
+        },
+        {
+          name: "Event Type 3",
+          data: [20, 15, 10, 5, 8]
+        }
+      ],
+      colors: ["#1C75D8", "#5CA9EF", "#CFE5FF"],
+      xaxis: {
+        categories: ["Feeder A", "Feeder B", "Feeder C", "DT-01", "DT-01"],
+        labels: {
+          style: {
+            fontSize: '14px'
+          }
+        }
+      },
+      legend: {
+        position: 'top',
+        horizontalAlign: 'left'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      grid: {
+        strokeDashArray: 3
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#eventFeederCount"), options);
+    chart.render();
+  </script>
   <script>
     new WOW().init();
   </script>

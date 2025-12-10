@@ -8,7 +8,7 @@
   <meta name="description" content="Cloud4Things" />
   <title>Cloud4Things HES - Meter Efficiency Analytics</title>
 
- <!-- ================== CSS FILES ================== -->
+  <!-- ================== CSS FILES ================== -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/custom.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -32,38 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
 
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 </head>
 
 <body>
@@ -199,8 +168,8 @@
 
         <!-- Analytics -->
         <div class="nav-item active">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
-            aria-controls="analytics" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics"
+            aria-expanded="false" aria-controls="analytics" role="button">
             <div class="icon"><i class="bi bi-compass"></i></div>
             <div class="label">Analytics</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -212,11 +181,13 @@
               <div class="">Event Overview</div>
             </a>
 
-            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="load-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Load Analytics</div>
             </a>
 
-            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="meter-efficiency-analytics.html" class="subitem d-flex align-items-center" role="link"><i
+                class="bi bi-shield-lock"></i>
               <div class="">Meter Efficiency Analytics</div>
             </a>
           </div>
@@ -224,8 +195,8 @@
 
         <!-- Tamper -->
         <div class="nav-item">
-          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper" aria-expanded="false"
-            aria-controls="tamper" role="button">
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="tamper"
+            aria-expanded="false" aria-controls="tamper" role="button">
             <div class="icon"><i class="bi bi-shield-slash-fill"></i></div>
             <div class="label">Tamper</div>
             <div class="caret"><i class="bi bi-chevron-right"></i></div>
@@ -401,7 +372,7 @@
             </div>
 
             <div class="col-md-5">
-              <div class="card p-3"> 
+              <div class="card p-3">
                 <div class="title">Coverage (24h)</div>
                 <div class="row">
                   <div class="col-xxl-3">
@@ -485,6 +456,89 @@
   </div>
 
 
+  <!-- ================== JS FILES ================== -->
+
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+  <script>
+    new ApexCharts(document.querySelector("#readTrend"), {
+      chart: { type: 'line', height: 260 },
+      series: [{
+        name: "Read %",
+        data: [91, 88, 85, 84, 88, 87, 91]
+      }],
+      xaxis: {
+        categories: ["Apr 11", "Apr 12", "Apr 13", "Apr 14", "Apr 15", "Apr 16", "Apr 17"]
+      },
+      stroke: { width: 3, curve: 'smooth' }
+    }).render();
+
+    // Comm Success Trend
+    new ApexCharts(document.querySelector("#commTrend"), {
+      chart: { type: 'line', height: 260 },
+      series: [{
+        name: "Comm %",
+        data: [92, 90, 89, 90, 88, 91, 93]
+      }],
+      xaxis: {
+        categories: ["Apr 11", "Apr 12", "Apr 13", "Apr 14", "Apr 15", "Apr 16", "Apr 17"]
+      },
+      stroke: { width: 3, curve: 'smooth' }
+    }).render();
+
+    // Read Failures Bar Chart
+    new ApexCharts(document.querySelector("#failuresChart"), {
+      chart: { type: 'bar', height: 260 },
+      series: [{
+        name: "Failures",
+        data: [55, 51, 48, 45]
+      }],
+      xaxis: {
+        categories: ["BSK FDR 05", "VRG FDR 04", "BSK FDR 02", "KPR FDR 06"]
+      }
+    }).render();
+
+    // Offline Meters Horizontal Chart
+    new ApexCharts(document.querySelector("#offlineChart"), {
+      chart: { type: 'bar', height: 260 },
+      plotOptions: { bar: { horizontal: true } },
+      series: [{
+        name: "Offline",
+        data: [120, 90, 75, 68, 60]
+      }],
+      xaxis: {
+        categories: ["YLN FDR 03", "NDG FDR 02", "BSK FDR 10", "KPR FDR 08", "VRG FDR 01"]
+      }
+    }).render();
+  </script>
   <script>
     new WOW().init();
   </script>

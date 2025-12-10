@@ -32,38 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
-
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+  
 </head>
 
 <body>
@@ -482,6 +451,124 @@
     </main>
   </div>
 
+
+<!-- ================== JS FILES ================== -->
+
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+  <script>
+    // --- SYNC SUCCESS LINE CHART ---
+var syncOptions = {
+  chart: {
+    type: 'line',
+    height: 260,
+    toolbar: { show: false },
+    zoom: { enabled: false },
+    sparkline: { enabled: false }
+  },
+  series: [{
+    name: 'Sync Success',
+    data: [88, 92, 93, 95, 97.8] // Tue, Thu, Sat, Mon etc
+  }],
+  stroke: {
+    curve: 'smooth',
+    width: 3
+  },
+  xaxis: {
+    categories: ['Tue', 'Thu', 'Sat', 'Sun', 'Mon'],
+    labels: {
+      style: { colors: '#6b7280' }
+    }
+  },
+  yaxis: {
+    labels: {
+      formatter: function (val) { return val + "%"; },
+      style: { colors: '#6b7280' }
+    },
+    min: 80, max: 100
+  },
+  markers: { size: 4 },
+  colors: ['#0b5ed7'],
+  tooltip: {
+    y: { formatter: function (val) { return val + "%"; } }
+  },
+  grid: {
+    strokeDashArray: 4,
+    borderColor: '#e6eef6'
+  },
+  legend: { show: false }
+};
+
+var syncChart = new ApexCharts(document.querySelector("#syncSuccessChart"), syncOptions);
+syncChart.render();
+
+// --- PENDING vs REJECTED BAR CHART ---
+var pendingRejectedOptions = {
+  chart: {
+    type: 'bar',
+    height: 260,
+    stacked: false,
+    toolbar: { show: false }
+  },
+  series: [
+    { name: 'Pending Reads', data: [160, 210, 130, 200, 240] },
+    { name: 'Rejected Reads', data: [90, 180, 230, 150, 260] }
+  ],
+  colors: ['#155bd3', '#b8c4cf'],
+  plotOptions: {
+    bar: {
+      horizontal: false,
+      columnWidth: '50%',
+      borderRadius: 6
+    }
+  },
+  dataLabels: { enabled: false },
+  xaxis: {
+    categories: ['Tue', 'Sat', 'Tet', 'Mon'],
+    labels: { style: { colors: '#6b7280' } }
+  },
+  yaxis: {
+    labels: { style: { colors: '#6b7280' } },
+    title: { text: undefined }
+  },
+  legend: {
+    position: 'bottom',
+    horizontalAlign: 'center'
+  },
+  grid: { borderColor: '#e6eef6' }
+};
+
+var pendingRejectedChart = new ApexCharts(document.querySelector("#pendingRejectedChart"), pendingRejectedOptions);
+pendingRejectedChart.render();
+  </script>
 
   <script>
     new WOW().init();

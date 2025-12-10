@@ -548,6 +548,80 @@
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
    <script type="text/javascript" src="js/moment.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+
+  <script>
+    
+/* ------------------------------
+     BILLING SUCCESS RATE (LINE)
+ ------------------------------ */
+const billingOptions = {
+  chart: {
+    type: 'line',
+    height: 300,
+    toolbar: { show: false }
+  },
+  series: [{
+    name: "Success Rate",
+    data: [
+      95, 96, 95.5, 97, 96.2, 95.8, 96.7, 96.3, 96.8,
+      97.2, 96.9, 97.1, 96.5, 96.9, 97.3
+    ]
+  }],
+  stroke: {
+    width: 2,
+    curve: 'smooth'
+  },
+  colors: ["#1A73E8"],
+  xaxis: {
+    categories: [
+      "Jan 30 days", "3 Day", "31 Jan", "30 Jan",
+      "31 Jan", "3 Day", "Jan 30 days", "30 Jan",
+      "31 Jan", "Jan 30 days", "3 Day", "31 Jan",
+      "30 Jan", "Jan 30 days", "3 Day"
+    ]
+  },
+  yaxis: {
+    min: 94,
+    max: 100,
+    labels: {
+      formatter: val => val.toFixed(0) + "%"
+    }
+  },
+  grid: {
+    strokeDashArray: 4,
+    borderColor: "#eee"
+  }
+};
+
+new ApexCharts(document.querySelector("#billingRateChart"), billingOptions).render();
+
+
+/* ------------------------------
+    CONSUMER TYPE DONUT
+------------------------------ */
+const consumerOptions = {
+  chart: {
+    type: 'donut',
+    height: 300
+  },
+  labels: ["Domestic", "Commercial", "Industrial", "Agriculture", "Anulustricc"],
+  series: [39, 25, 15, 8, 16],
+  colors: ["#1A73E8", "#4378FF", "#6B95FF", "#8BB2FF", "#3A62D7"],
+  legend: {
+    position: "right",
+    fontSize: "14px"
+  },
+  plotOptions: {
+    pie: {
+      donut: {
+        size: "65%"
+      }
+    }
+  }
+};
+
+new ApexCharts(document.querySelector("#consumerTypeChart"), consumerOptions).render();
+  </script>
   <script>
     new WOW().init();
   </script>

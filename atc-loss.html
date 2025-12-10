@@ -498,6 +498,174 @@
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
   <script>
+    //AT&C Loss Funnel Chart
+
+var options = {
+  series: [
+    {
+      name: "Funnel Series",
+      data: [1380, 1100, 990, 880],
+    },
+  ],
+  chart: {
+    type: 'bar',
+    height: 350,
+    dropShadow: {
+      enabled: true,
+    },
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 0,
+      horizontal: true,
+      barHeight: '80%',
+      isFunnel: true,
+    },
+  },
+  dataLabels: {
+    enabled: true,
+    formatter: function (val, opt) {
+      return opt.w.globals.labels[opt.dataPointIndex] + ':  ' + val
+    },
+    dropShadow: {
+      enabled: true,
+    },
+  },
+  // title: {
+  //   text: 'Recruitment Funnel',
+  //   align: 'middle',
+  // },
+  xaxis: {
+    categories: [
+      'Input Energy',
+      'Billed Energy',
+      'Collected Revenue',
+      'TeKC Loss',
+    ],
+  },
+  legend: {
+    show: false,
+  },
+};
+
+var chart = new ApexCharts(document.querySelector("#funnelChart"), options);
+chart.render();
+
+
+
+
+
+//Circlewise AT&C Loss Chart
+var options = {
+  chart: {
+    type: 'bar',
+    height: 350
+  },
+  title: {
+    // text: "Circle-wise AT&C Loss",
+    align: "left",
+    style: {
+      fontSize: "18px",
+      fontWeight: 600
+    }
+  },
+  series: [{
+    name: "AT&C Loss (%)",
+    data: [11.5, 12.1, 13.0, 11.3] // You can adjust values
+  }],
+  xaxis: {
+    categories: ["Central", "North", "East", "West"],
+    labels: { style: { fontSize: "14px" } }
+  },
+  yaxis: {
+    labels: {
+      formatter: function (val) {
+        return val.toFixed(1) + "%";
+      }
+    }
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: "50%",
+      borderRadius: 4
+    }
+  },
+  colors: ["#4C9DD9", "#5FA8DD", "#3F6CC8", "#1C3D67"],
+  grid: {
+    borderColor: "#e0e0e0"
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#circleChart"), options);
+chart.render();
+
+//AT&C Loss Trend Chart
+var options = {
+  chart: {
+    type: "line",
+    height: 300,
+    toolbar: { show: false }
+  },
+
+  title: {
+    // text: "AT&C Loss Trend",
+    align: "left",
+    style: {
+      fontSize: "18px",
+      fontWeight: 600
+    }
+  },
+
+  series: [
+    {
+      name: "AT&C Loss",
+      data: [9, 10, 11, 10, 12, 14, 16, 14, 13, 12] // Editable
+    }
+  ],
+
+  stroke: {
+    curve: "smooth",
+    width: 3
+  },
+
+  markers: {
+    size: 5,
+    colors: "#fff",
+    strokeColors: "#1A73E8",
+    strokeWidth: 3
+  },
+
+  colors: ["#1A73E8"],
+
+  xaxis: {
+    categories: ["10", "14", "21", "28", "24", "34", "7", "8 ", "4 ", " 9"],
+    labels: {
+      style: { fontSize: "13px" }
+    }
+  },
+
+  yaxis: {
+    min: 0,
+    max: 18,
+    tickAmount: 6,
+    labels: {
+      style: { fontSize: "13px" }
+    }
+  },
+
+  grid: {
+    borderColor: "#e5e7eb"
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#atcTrendChart"), options);
+chart.render();
+
+
+
+  </script>
+
+  <script>
     new WOW().init();
   </script>
 

@@ -32,39 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
-
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
-
+ 
 </head>
 
 <body>
@@ -554,6 +522,133 @@
     </main>
   </div>
 
+ <!-- ================== JS FILES ================== -->
+
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+
+  <script>
+    // ---------- Duplicate Reads Trend (combo: column + line) ----------
+(function () {
+  // sample dates and data to mimic the image
+  const labels = [
+    "Apr 1", "Apr 3", "Apr 5", "Apr 7", "Apr 9", "Apr 11", "Apr 13", "Apr 15", "Apr 17", "Apr 19", "Apr 21", "Apr 23", "Apr 25", "Apr 27", "Apr 29"
+  ];
+
+  // daily duplicate reads (line) - slightly varying with an uptick at end
+  const lineData = [45000, 75000, 60000, 40000, 52000, 48000, 50000, 40000, 60000, 72000, 85000, 90000, 65000, 70000, 98000];
+
+  // 30-day duplicate read rate as bars
+  const barData = [4500, 7500, 6000, 4000, 5200, 4800, 5000, 4000, 6000, 7200, 8500, 9000, 6500, 7000, 9800];
+
+  const options = {
+    chart: { height: 280, type: 'line', toolbar: { show: false } },
+    series: [
+      { name: 'Daily Duplicate Reads', type: 'line', data: lineData },
+      { name: '30-Day Duplicate Read Rate', type: 'column', data: barData }
+    ],
+    stroke: { width: [3, 0], curve: 'smooth' },
+    plotOptions: { bar: { columnWidth: '45%' } },
+    markers: { size: 3 },
+    xaxis: { categories: labels, labels: { rotate: -20 } },
+    yaxis: [
+      { title: { text: undefined }, labels: { formatter: function (val) { return Math.round(val / 1000) + 'k'; } } },
+    ],
+    colors: ['#2563eb', '#facc15'],
+    legend: { show: true, position: 'top' },
+    grid: { borderColor: '#eef2ff' },
+    tooltip: { shared: true }
+  };
+
+  const chart = new ApexCharts(document.querySelector("#trendChart"), options);
+  chart.render();
+})();
+
+// ---------- Pie Chart: Root-Cause Distribution ----------
+(function () {
+  const options = {
+    chart: { type: 'pie', height: 200 },
+    labels: ['Network Issue', 'Minor times', 'Bashand Collision', 'Invalid Timestamp'],
+    series: [45, 26, 26, 3],
+    colors: ['#2563eb', '#facc15', '#6b7280', '#60a5fa'],
+    legend: { show: false },
+    stroke: { colors: ['#fff'] },
+    tooltip: { y: { formatter: function (val) { return val + '%'; } } }
+  };
+  const chart = new ApexCharts(document.querySelector("#pieChart"), options);
+  chart.render();
+})();
+
+// ---------- Scatter Chart: Timestamp Correlation ----------
+(function () {
+  // generate sample correlated data
+  const points = [];
+  for (let i = 0; i < 60; i++) {
+    // x: duplicates reads, y: position index (pseudo)
+    const x = Math.round(200 + i * 8 + (Math.random() * 80 - 40));
+    const y = Math.round(50 + i * 2 + (Math.random() * 30 - 15));
+    points.push([x, y]);
+  }
+
+  const options = {
+    chart: { type: 'scatter', height: 220, zoom: { enabled: false }, toolbar: { show: false } },
+    series: [{ name: 'Duplicates', data: points }],
+    xaxis: { title: { text: 'Duplicates Reads' } },
+    yaxis: { title: { text: 'Possible Error Rate' } },
+    markers: { size: 5 },
+    colors: ['#2563eb'],
+    grid: { borderColor: '#eef2ff' }
+  };
+
+  const chart = new ApexCharts(document.querySelector("#scatterChart"), options);
+  chart.render();
+})();
+
+// ---------- Meter-Wise Duplicates (vertical bar) ----------
+(function () {
+  const options = {
+    chart: { type: 'bar', height: 220, toolbar: { show: false } },
+    series: [{ name: 'Duplicates', data: [800, 600, 450, 380, 720] }],
+    plotOptions: { bar: { borderRadius: 6, barHeight: '60%' } },
+    dataLabels: { enabled: false },
+    xaxis: { categories: ['Ingestion', 'Validation', 'Processing', 'Storage', 'Distribution'] },
+    yaxis: { labels: { formatter: function (val) { return val; } } },
+    colors: ['#fbbf24'],
+    grid: { borderColor: '#f1f5f9' }
+  };
+
+  const chart = new ApexCharts(document.querySelector("#meterBarChart"), options);
+  chart.render();
+})();
+  </script>
 
   <script>
     new WOW().init();

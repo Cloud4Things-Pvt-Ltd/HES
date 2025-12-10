@@ -32,38 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
-
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+  
 
 </head>
 
@@ -537,6 +506,102 @@
     </main>
   </div>
 
+<!-- ================== JS FILES ================== -->
+
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+  <script>
+    
+var lineOptions1 = {
+  chart: {
+    type: 'area',
+    height: 280,
+    toolbar: { show: false }
+  },
+  series: [
+    {
+      name: 'Upgrades',
+      data: [22, 20, 18, 34, 28, 31, 40, 35, 30, 36, 33, 40]
+    },
+    {
+      name: 'Failures',
+      data: [10, 12, 11, 14, 16, 13, 15, 17, 16, 18, 20, 19]
+    }
+  ],
+  xaxis: {
+    categories: ['Mar 24', 'Mar 27', 'Apr 24', 'Apr 29', 'Apr 28', 'Apr 30', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27']
+  },
+  stroke: {
+    curve: 'smooth',
+    width: 3
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shadeIntensity: 0.3,
+      opacityFrom: 0.4,
+      opacityTo: 0.05
+    }
+  },
+  dataLabels: { enabled: false },
+  grid: { borderColor: '#eee' }
+};
+
+new ApexCharts(document.querySelector("#lineChart"), lineOptions1).render();
+
+var barOptions = {
+  chart: {
+    type: 'bar',
+    height: 280,
+    toolbar: { show: false }
+  },
+  series: [{
+    name: 'Devices',
+    data: [45, 60, 42, 38, 30, 28, 24]
+  }],
+  xaxis: {
+    categories: ['FIRM-1', 'FIRM-2', 'FIRM-3', 'FIRM-4', 'FIRM-5', 'FIRM-9', 'FIRM-7']
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 6,
+      columnWidth: '45%'
+    }
+  },
+  dataLabels: { enabled: false },
+  grid: { borderColor: '#eee' }
+};
+
+new ApexCharts(document.querySelector("#barChart"), barOptions).render();
+  </script>
   <script>
     new WOW().init();
   </script>

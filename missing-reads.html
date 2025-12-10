@@ -32,38 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
-
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+  
 </head>
 
 <body>
@@ -566,7 +535,124 @@
     </main>
   </div>
 
+<!-- ================== JS FILES ================== -->
 
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+
+  <script>
+    //Missing Trend Charts
+
+var options = {
+  series: [{
+    name: 'TEAM A',
+    type: 'column',
+    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+  }, {
+    name: 'TEAM C',
+    type: 'line',
+    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
+  }],
+  chart: {
+    height: 350,
+    type: 'line',
+    stacked: false,
+  },
+  stroke: {
+    width: [0, 2, 5],
+    curve: 'smooth'
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: '50%'
+    }
+  },
+
+  fill: {
+    opacity: [0.85, 0.25, 1],
+    gradient: {
+      inverseColors: false,
+      shade: 'light',
+      type: "vertical",
+      opacityFrom: 0.85,
+      opacityTo: 0.55,
+      stops: [0, 100, 100, 100]
+    }
+  },
+  labels: ['01/01/2025', '02/01/2025', '03/01/2025', '04/01/2025', '05/01/2025', '06/01/2025', '07/01/2025',
+    '08/01/2025', '09/01/2025', '10/01/2025', '11/01/2025'
+  ],
+  markers: {
+    size: 0
+  },
+  xaxis: {
+    type: 'datetime'
+  },
+  yaxis: {
+    title: {
+      text: 'Points',
+    }
+  },
+  tooltip: {
+    shared: true,
+    intersect: false,
+    y: {
+      formatter: function (y) {
+        if (typeof y !== "undefined") {
+          return y.toFixed(0) + " points";
+        }
+        return y;
+
+      }
+    }
+  }
+};
+
+var chart = new ApexCharts(document.querySelector("#missingTrendCharts"), options);
+chart.render();
+
+// ---------- Feeder treemap (used as 'heatmap') ----------
+var treeOptions = {
+  chart: { type: 'treemap', height: 180 },
+  series: [{
+    data: [
+      { x: 'A', y: 364 }, { x: 'B', y: 337 }, { x: 'C', y: 315 }, { x: 'D', y: 291 }, { x: 'E', y: 247 },
+      { x: 'F', y: 210 }, { x: 'G', y: 120 }, { x: 'H', y: 100 }
+    ]
+  }],
+  colors: ['#bbdefb', '#90caf9', '#64b5f6', '#42a5f5', '#2196f3']
+};
+new ApexCharts(document.querySelector('#feeder-treemap'), treeOptions).render();
+
+  </script>
   <script>
     new WOW().init();
   </script>

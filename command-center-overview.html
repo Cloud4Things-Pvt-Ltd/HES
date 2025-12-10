@@ -32,39 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  <!-- ================== JS FILES ================== -->
-
-  <!-- Highcharts -->
-  <script src="js/highmaps.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/adaptive.js"></script>
-
-  <!-- ApexCharts -->
-  <script src="js/apexcharts.js"></script>
-
-  <!-- jQuery (must load before Datatables & custom JS) -->
-  <script src="js/jquery.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <!-- DataTables JS -->
-  <script src="js/datatables.min.js"></script>
-
-  <!-- WOW JS -->
-  <script src="js/wow.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/custom.js"></script>
-  <script src="js/custom1.js"></script>
-
-  <!--Datepicker Range-->
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
-
+ 
 </head>
 
 <body>
@@ -528,6 +496,84 @@
     </main>
   </div>
 
+ <!-- ================== JS FILES ================== -->
+
+  <!-- Highcharts -->
+  <script src="js/highmaps.js"></script>
+  <script src="js/exporting.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/adaptive.js"></script>
+
+  <!-- ApexCharts -->
+  <script src="js/apexcharts.js"></script>
+
+  <!-- jQuery (must load before Datatables & custom JS) -->
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- DataTables JS -->
+  <script src="js/datatables.min.js"></script>
+
+  <!-- WOW JS -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/custom.js"></script>
+  <script src="js/custom1.js"></script>
+
+  <!--Datepicker Range-->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/daterangepicker.min.js"></script>
+
+  <script>
+    // Command Executed
+const lineOptions = {
+  chart: {
+    type: 'line',
+    height: 280,
+    toolbar: { show: false }
+  },
+  series: [{
+    name: "Commands",
+    data: [220, 340, 180, 410, 260, 430, 350]
+  }],
+  xaxis: {
+    categories: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"]
+  },
+  stroke: {
+    curve: 'smooth',
+    width: 3
+  },
+  grid: {
+    borderColor: '#e5e7eb'
+  }
+};
+
+new ApexCharts(document.querySelector("#commandExecuted"), lineOptions).render();
+
+// Command Status
+const donutOptions = {
+  chart: {
+    type: 'donut',
+    height: 280
+  },
+  labels: ["Successful", "Pending", "Failed"],
+  colors: ["#2887a7ff", "#1b5178ff", "#bc3939ff"],
+  series: [62, 21, 17],
+  legend: {
+    position: 'bottom'
+  },
+  stroke: {
+    width: 0
+  }
+};
+
+new ApexCharts(document.querySelector("#commandStatus"), donutOptions).render();
+  </script>
 
   <script>
     new WOW().init();
