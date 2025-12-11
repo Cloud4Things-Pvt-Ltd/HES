@@ -131,7 +131,7 @@
 
       <nav class="nav flex-column" role="navigation" aria-label="Sidebar menu">
         <!-- Dashboard -->
-        <div class="nav-item">
+        <div class="nav-item active">
           <a href="index.html" class="nav-link sidebar-link" data-key="dashboard" role="link">
             <div class="icon"><i class="bi bi-speedometer2"></i></div>
             <div class="label">Dashboard</div>
@@ -158,8 +158,7 @@
               <div class="">Meter Read History</div>
             </a>
 
-            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i
-                class="bi bi-shield-lock"></i>
+            <a href="meter-configuration.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Meter Configuration</div>
             </a>
 
@@ -167,7 +166,7 @@
         </div>
 
         <!-- Analytics -->
-        <div class="nav-item active">
+        <div class="nav-item">
           <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="analytics" aria-expanded="false"
             aria-controls="analytics" role="button">
             <div class="icon"><i class="bi bi-compass"></i></div>
@@ -206,7 +205,7 @@
               <div class="">Command Center </div>
             </a>
 
-            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="bulk-command-execution.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Bulk Command Execution</div>
             </a>
           </div>
@@ -214,7 +213,7 @@
 
         <!--Firmwire-->
         <div class="nav-item">
-          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="firmwire" aria-expanded="false"
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="firmwire" aria-expanded="false"
             aria-controls="firmwire" role="button">
             <div class="icon"><i class="bi bi-cpu"></i></div>
             <div class="label">Firmwire</div>
@@ -223,7 +222,7 @@
 
           <div id="firmwire" class="submenu" role="region" aria-hidden="true">
             <div class="mt-1">
-              <a href="#" class="subitem d-flex align-items-center js-sub-toggle" data-target="menu-advanced"
+              <a href="firwire-overview.html" class="subitem d-flex align-items-center js-sub-toggle" data-target="menu-advanced"
                 aria-expanded="false" aria-controls="menu-advanced" role="button">
                 <i class="bi bi-sliders"></i>
                 <div class="">Firmwire Overview</div>
@@ -231,10 +230,10 @@
               </a>
 
               <div id="menu-advanced" class="submenu-nested" role="region" aria-hidden="true">
-                <a href="#" class="subitem" role="link"><i class="bi bi-shuffle"></i>
+                <a href="firmwire-group.html" class="subitem" role="link"><i class="bi bi-shuffle"></i>
                   <div class="">Firwire Group management</div>
                 </a>
-                <a href="#" class="subitem" role="link"><i class="bi bi-hdd-stack"></i>
+                <a href="firmwire-push-console.html" class="subitem" role="link"><i class="bi bi-hdd-stack"></i>
                   <div class="">Firmwire Push Console</div>
                 </a>
               </div>
@@ -244,7 +243,7 @@
 
         <!-- Data Read Category -->
         <div class="nav-item">
-          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="data-read-category" aria-expanded="false"
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="data-read-category" aria-expanded="false"
             aria-controls="data-read-category" role="button">
             <div class="icon"><i class="bi bi-folder2-open"></i></div>
             <div class="label">Data Read Category</div>
@@ -252,12 +251,12 @@
           </a>
 
           <div id="data-read-category" class="submenu" role="region" aria-hidden="true">
-            <a href="#" class="subitem d-flex align-items-center" role="link">
+            <a href="missing-reads.html" class="subitem d-flex align-items-center" role="link">
               <i class="bi bi-person-circle"></i>
               <div class="">Missing Reads Dashboard</div>
             </a>
 
-            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="duplicate-reads-dashboard.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Duplicate Reads Dashboard</div>
             </a>
           </div>
@@ -265,7 +264,7 @@
 
         <!-- MDMS Sync Dashboard -->
         <div class="nav-item">
-          <a href="#" class="nav-link sidebar-link" data-key="mdms-sync" role="link">
+          <a href="mdms-sync-dashboard.html" class="nav-link sidebar-link" data-key="mdms-sync" role="link">
             <div class="icon"><i class="bi bi-bar-chart-line"></i></div>
             <div class="label">MDMS Sync Dashboard</div>
           </a>
@@ -273,7 +272,7 @@
 
         <!-- Reports -->
         <div class="nav-item">
-          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="reports" aria-expanded="false"
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="reports" aria-expanded="false"
             aria-controls="reports" role="button">
             <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
             <div class="label">Reports</div>
@@ -281,12 +280,12 @@
           </a>
 
           <div id="reports" class="submenu" role="region" aria-hidden="true">
-            <a href="#" class="subitem d-flex align-items-center" role="link">
+            <a href="energy-consumption-report.html" class="subitem d-flex align-items-center" role="link">
               <i class="bi bi-person-circle"></i>
               <div class="">Energy Consumption Reports</div>
             </a>
 
-            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="generated-report-list.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Generated Reports List</div>
             </a>
           </div>
@@ -294,7 +293,7 @@
 
         <!-- Billing -->
         <div class="nav-item">
-          <a href="#" class="nav-link sidebar-link js-sub-toggle" data-target="billing" aria-expanded="false"
+          <a href="javascript:void(0);" class="nav-link sidebar-link js-sub-toggle" data-target="billing" aria-expanded="false"
             aria-controls="billing" role="button">
             <div class="icon"><i class="bi bi-receipt"></i></div>
             <div class="label">Billing</div>
@@ -302,20 +301,20 @@
           </a>
 
           <div id="billing" class="submenu" role="region" aria-hidden="true">
-            <a href="#" class="subitem d-flex align-items-center" role="link">
+            <a href="billing-overview.html" class="subitem d-flex align-items-center" role="link">
               <i class="bi bi-person-circle"></i>
               <div class="">Billing overview</div>
             </a>
 
-            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="atc-loss.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">AT&C Loss Analytics</div>
             </a>
 
-            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="billing-system-integration.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Billing System Integration</div>
             </a>
 
-            <a href="#" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
+            <a href="payment-gateway-integration.html" class="subitem d-flex align-items-center" role="link"><i class="bi bi-shield-lock"></i>
               <div class="">Payment Gateway Integrations</div>
             </a>
           </div>
@@ -331,7 +330,6 @@
         </div>
       </nav>
     </aside>
-
     <!-- backdrop for mobile -->
     <div id="sidebarBackdrop" class="sidebar-backdrop" tabindex="-1" aria-hidden="true"></div>
 

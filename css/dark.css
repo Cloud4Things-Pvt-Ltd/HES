@@ -8,14 +8,14 @@ Author: Satakshi Datta
 
 /* CSS Document */
 body.dark {
-    background-color: #292929 !important;
+    background-color: #000 !important;
 
     #outageMap svg rect {
-        fill: #0F172B;
+        fill: #2b2b2b;
     }
 
     .topbar {
-        background: #0F172B;
+        background: #2b2b2b;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         backdrop-filter: none;
     }
@@ -30,7 +30,7 @@ body.dark {
     }
 
     .top-cards .card-each {
-        background: #0F172B;
+        background: #2b2b2b;
         box-shadow: none;
     }
 
@@ -43,7 +43,7 @@ body.dark {
     }
 
     .sidebar {
-        background: #0F172B;
+        background: #2b2b2b;
     }
 
     .nav-link.sidebar-link {
@@ -51,7 +51,7 @@ body.dark {
     }
 
     .middle-card-each {
-        background: #0F172B;
+        background: #2b2b2b;
         box-shadow: none;
     }
 
@@ -64,7 +64,7 @@ body.dark {
     }
 
     div#energyConsumption svg rect {
-        fill: #0F172B;
+        fill: #2b2b2b;
     }
 
     .highcharts-yaxis-labels text {
@@ -72,7 +72,7 @@ body.dark {
     }
 
     .notification-list {
-        background-color: #0F172B;
+        background-color: #2b2b2b;
     }
 
     .notification-item div.title {
@@ -110,7 +110,7 @@ body.dark {
     }
 
     div#demandSupply svg rect {
-        fill: #0F172B !important;
+        fill: #2b2b2b !important;
     }
 
     section.footer p {
@@ -122,7 +122,7 @@ body.dark {
     }
 
     .commandEach {
-        background: #0F172B;
+        background: #2b2b2b;
         box-shadow: none;
     }
 
@@ -135,11 +135,11 @@ body.dark {
     }
 
     div#pendingCommands svg rect {
-        fill: #0F172B;
+        fill: #2b2b2b;
     }
 
     .tableIndex {
-        background: #0F172B;
+        background: #2b2b2b;
         box-shadow: none;
     }
 
@@ -231,4 +231,49 @@ body.dark {
         background: #212c42 !important;
         color: #cecece;
     }
+
+    section.paymentGatewayIntegration .card {
+        background: #2b2b2b;
+        box-shadow: none;
+    }
+
+    .metric-title {
+        color: #b4b4b4;
+    }
+
+    .metric-value {
+        color: #fff;
+    }
+
+    span.sub-dash-head {
+        color: #f2f2f2;
+    }
+
+    .flow-container {
+        background: #2b2b2b;
+    }
+
+    .arrow,
+    .down-arrow {
+        color: #fff;
+    }
+
+    section.paymentGatewayIntegration table thead {
+        background: #000;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    section.paymentGatewayIntegration table tbody tr td {
+        color: #f2f2f2 !important;
+        font-size: 13px;
+        line-height: 19px;
+    }
+
+    .billingChartsEach {
+        background: #2b2b2b;
+        box-shadow: none;
+    }
+
 }

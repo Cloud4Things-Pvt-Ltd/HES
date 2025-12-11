@@ -353,28 +353,28 @@
             <div class="col-md-3">
               <div class="card p-3">
                 <div class="metric-title">Payment Success %</div>
-                <div class="metric-value">97.5 %</div>
+                <div class="metric-value" style="color: #00cb6d;">97.5 %</div>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="card p-3">
                 <div class="metric-title">Pending Settlements</div>
-                <div class="metric-value">₹ 2,10,400</div>
+                <div class="metric-value" style="color: #eb8510;">₹ 2,10,400</div>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="card p-3">
                 <div class="metric-title">Failed Transactions</div>
-                <div class="metric-value">125</div>
+                <div class="metric-value" style="color: #cb0000;">125</div>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="card p-3">
                 <div class="metric-title">Last Settlement</div>
-                <div class="metric-value">Today</div>
+                <div class="metric-value" style="color: #46b0e9;">Today</div>
               </div>
             </div>
           </div>
@@ -382,7 +382,7 @@
           <!-- FLOW DIAGRAM + RECONCILIATION -->
           <div class="row g-3 mb-3">
             <!-- Flow Diagram -->
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="flow-container">
 
                 <div class="box">Consumer</div>
@@ -402,69 +402,70 @@
               </div>
             </div>
 
+
+          </div>
+
+          <!-- DAILY VOLUME + HISTOGRAM + EXCEPTION TABLE -->
+          <div class="row g-3">
             <!-- Reconciliation Chart -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card p-3">
                 <h4 class="middle-subhead">Reconciliation</h4>
                 <div id="reconChart"></div>
               </div>
             </div>
-          </div>
 
-          <!-- DAILY VOLUME + HISTOGRAM + EXCEPTION TABLE -->
-          <div class="row g-3">
-
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card p-3">
                 <h4 class="middle-subhead">Daily Payment Volumes</h4>
                 <div id="volumeChart"></div>
-                <h3 class="text-center mt-2">92 %</h3>
+                <!-- <h3 class="text-center mt-2">92 %</h3> -->
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card p-3">
                 <h4 class="middle-subhead">Settlement Delay Histogram</h4>
                 <div id="delayChart"></div>
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card p-3">
                 <h4 class="middle-subhead">Exception Queue</h4>
+                <div class="table-responsive">
+                  <table class="table table-bordered exception-table">
+                    <thead>
+                      <tr>
+                        <th>Consumer ID</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
 
-                <table class="table table-bordered exception-table">
-                  <thead class="table-light">
-                    <tr>
-                      <th>Consumer ID</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>1106576481</td>
-                      <td>₹1,550.00</td>
-                    </tr>
-                    <tr>
-                      <td>110500,000</td>
-                      <td>₹1,300.00</td>
-                    </tr>
-                    <tr>
-                      <td>110000,000</td>
-                      <td>₹1,350.00</td>
-                    </tr>
-                    <tr>
-                      <td>110500,000</td>
-                      <td>Validation Err</td>
-                    </tr>
-                    <tr>
-                      <td>110500,000</td>
-                      <td>Rejection Err</td>
-                    </tr>
-                  </tbody>
-                </table>
-
+                    <tbody>
+                      <tr>
+                        <td>1106576481</td>
+                        <td>₹1,550.00</td>
+                      </tr>
+                      <tr>
+                        <td>110500,000</td>
+                        <td>₹1,300.00</td>
+                      </tr>
+                      <tr>
+                        <td>110000,000</td>
+                        <td>₹1,350.00</td>
+                      </tr>
+                      <tr>
+                        <td>110500,000</td>
+                        <td>Validation Err</td>
+                      </tr>
+                      <tr>
+                        <td>110500,000</td>
+                        <td>Rejection Err</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
@@ -522,8 +523,16 @@
     // Reconciliation Chart
     new ApexCharts(document.querySelector("#reconChart"), {
       chart: { type: "bar", height: 200 },
-      series: [{ name: "Transactions", data: [15, 20, 10, 25, 30] }],
-      xaxis: { categories: ["15 Apr", "16 Apr", "18 Apr", "19 Apr", "20 Apr"] }
+      plotOptions: {
+        bar: {
+          borderRadius: 4,
+          borderRadiusApplication: 'end',
+          horizontal: true,
+        }
+      },
+      colors: ['#efa83c'],
+      series: [{ name: "Transactions", data: [15, 20, 10, 25, 30, 44] }],
+      xaxis: { categories: ["15 Apr", "16 Apr", "18 Apr", "19 Apr", "20 Apr", "21 Apr"] }
     }).render();
 
     // Daily Volume Chart
@@ -532,6 +541,10 @@
       series: [{
         data: [25, 55, 20, 15, 5, 40, 18]
       }],
+      colors: [
+        '#45C4B0',
+      ],
+
       xaxis: { categories: ["<0%", "10%", "20%", "30%", "40%", "50%", "60%"] }
     }).render();
 
@@ -539,7 +552,7 @@
     new ApexCharts(document.querySelector("#delayChart"), {
       chart: { type: "bar", height: 220 },
       series: [{
-        data: [50, 30, 20, 10, 5, 2]
+        data: [60, 40, 30, 20, 15, 10]
       }],
       xaxis: { categories: ["<20", "23", "40", "50", "60", ">50"] }
     }).render();
