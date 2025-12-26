@@ -21,7 +21,7 @@ $(window).bind("load", function () {
   const swatches = document.querySelectorAll('.btn-theme');
 
   // Preferences
-  let prefs = { collapsed: false, dark: false, primary: getComputedStyle(root).getPropertyValue('--primary').trim() };
+  // let prefs = { collapsed: false, dark: false, primary: getComputedStyle(root).getPropertyValue('--primary').trim() };
 
   // load prefs
   try {
