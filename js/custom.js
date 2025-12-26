@@ -142,13 +142,13 @@ $(window).bind("load", function () {
   });
 
   // Theme toggle
-  btnTheme.addEventListener('click', function () {
-    const isDark = body.classList.toggle('dark');
-    btnTheme.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-    btnTheme.querySelector('i').className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
-    prefs.dark = isDark;
-    savePrefs();
-  });
+  // btnTheme.addEventListener('click', function () {
+  //   const isDark = body.classList.toggle('dark');
+  //   btnTheme.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+  //   btnTheme.querySelector('i').className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
+  //   prefs.dark = isDark;
+  //   savePrefs();
+  // });
 
   // Color swatches
   swatches.forEach(s => {
