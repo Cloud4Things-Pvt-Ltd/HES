@@ -15,7 +15,7 @@ body.dark {
     }
 
     .topbar {
-        background: #2b2b2b;
+        background: #242424;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         backdrop-filter: none;
     }
@@ -43,11 +43,27 @@ body.dark {
     }
 
     .sidebar {
-        background: #2b2b2b;
+        background: #1e1e1e;
     }
 
     .nav-link.sidebar-link {
-        color: #c9c9c9;
+        color: #ccc !important;
+    }
+
+    .sidebar .nav-item.active a,
+    .sidebar .nav-item.active a:hover,
+    .sidebar .nav-item a:hover {
+        background: none !important;
+        color: #fff !important;
+    }
+
+    .nav-link.sidebar-link .icon {
+        color: #adadad !important;
+        background: #3b3b3b;
+    }
+
+    .nav-item {
+        margin: 6px 6px 10px;
     }
 
     .middle-card-each {
@@ -143,7 +159,7 @@ body.dark {
         box-shadow: none;
     }
 
-    .tableIndex table thead {
+    .tableIndex>table>thead {
         background: #222d43;
         color: #bababa;
     }
@@ -157,7 +173,7 @@ body.dark {
     }
 
     .tableIndex table tbody tr:nth-child(even) {
-        background: #292c35;
+        background: #393939;
     }
 
     .apexcharts-text {
@@ -218,8 +234,9 @@ body.dark {
 
     div.dt-container .dt-search input {
         border: none;
-        background-color: #222d43;
+        background-color: #4c4c4c;
         color: #ccc;
+        margin-left: 10px;
     }
 
     .dt-search label {
@@ -275,5 +292,101 @@ body.dark {
         background: #2b2b2b;
         box-shadow: none;
     }
+
+    .sync-info .label {
+        color: #ffffff;
+    }
+
+    div#excQue {
+        background: #2b2b2b;
+        box-shadow: none;
+        border: none;
+    }
+
+    .billingOverviewBottom .card {
+        background: #2b2b2b;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .billingOverviewBottom .card .bar-value,
+    .billingOverviewBottom .card h6 {
+        color: #fff;
+    }
+
+    .atcLossEach {
+        background: #2b2b2b;
+        box-shadow: none;
+    }
+
+    .atcLossEach ul li {
+        line-height: 29px;
+        color: #f2f2f2;
+    }
+
+    .loss-row span {
+        font-size: 15px;
+        margin-bottom: 4px;
+        color: #f2f2f2;
+    }
+
+    .meterBoxEach {
+        background: #2b2b2b;
+        box-shadow: none;
+    }
+
+    ul.meter-list li:nth-child(odd) {
+        background: #1e1e1e;
+        color: #ccc;
+    }
+
+    ul.meter-list li:nth-child(even) {
+        background: rgb(36 36 36);
+        color: #ccc;
+    }
+
+    #eventCritical {
+        background: rgb(255 228 228);
+    }
+
+    #eventMajor {
+        background: rgb(255 237 191);
+    }
+
+    #eventMinor {
+        background: rgb(250 255 178);
+    }
+
+    #eventPend {
+        background: rgb(242 212 255);
+    }
+
+    #eventAck {
+        background: rgb(201 240 255);
+    }
+
+    #eventAuto {
+        background: rgb(203 255 201);
+    }
+
+    div#areaTrend,
+    #eventFeederCount,
+    #loadCurveChart,
+    #feederLChart {
+        background: #2B2B2B;
+        padding: 15px 10px;
+        margin: 30px 12px 0 0;
+        border-radius: 10px;
+        box-shadow: none;
+    }
+
+    div#areaTrend svg rect {
+        fill: #161111;
+    }
+
+    section.eventOverviewTables label {
+        color: #fff;
+    }
+
 
 }

@@ -8,7 +8,7 @@
   <meta name="description" content="Cloud4Things" />
   <title>Cloud4Things HES - AT&C Loss Analysis</title>
 
-<!-- ================== CSS FILES ================== -->
+  <!-- ================== CSS FILES ================== -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/custom.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -32,7 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
- 
+
 </head>
 
 <body>
@@ -391,9 +391,6 @@
                 <h4 class="middle-subhead">AT&C Loss Funnel</h4>
                 <div class="funnel-box">
                   <div id="funnelChart"></div>
-
-                  <h4 class="mt-3"><b>12.7%</b></h4>
-                  <p>Total Loss</p>
                 </div>
               </div>
             </div>
@@ -402,7 +399,9 @@
                 <h4 class="middle-subhead">Circle Wise AT&C Loss</h4>
                 <div id="circleChart"></div>
               </div>
-              <div class="atcLossEach">
+            </div>
+            <div class="col-xxl-4">
+              <div class="atcLossEach" style="padding: 15px 10px 64px 10px;">
                 <h4 class="middle-subhead">AT&C Loss Trend</h4>
                 <div id="atcTrendChart"></div>
               </div>
@@ -418,6 +417,9 @@
                   <li>GBD008 <span class="float-end">25.8%</span></li>
                 </ul>
               </div>
+
+            </div>
+            <div class="col-xxl-4">
               <div class="atcLossEach">
                 <h4 class="middle-subhead">Loss Contributors</h4>
                 <div class="loss-row">
@@ -464,7 +466,7 @@
     </main>
   </div>
 
- <!-- ================== JS FILES ================== -->
+  <!-- ================== JS FILES ================== -->
 
   <!-- Highcharts -->
   <script src="js/highmaps.js"></script>
@@ -494,172 +496,200 @@
 
   <!--Datepicker Range-->
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
   <script>
     //AT&C Loss Funnel Chart
 
-var options = {
-  series: [
-    {
-      name: "Funnel Series",
-      data: [1380, 1100, 990, 880],
-    },
-  ],
-  chart: {
-    type: 'bar',
-    height: 350,
-    dropShadow: {
-      enabled: true,
-    },
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 0,
-      horizontal: true,
-      barHeight: '80%',
-      isFunnel: true,
-    },
-  },
-  dataLabels: {
-    enabled: true,
-    formatter: function (val, opt) {
-      return opt.w.globals.labels[opt.dataPointIndex] + ':  ' + val
-    },
-    dropShadow: {
-      enabled: true,
-    },
-  },
-  // title: {
-  //   text: 'Recruitment Funnel',
-  //   align: 'middle',
-  // },
-  xaxis: {
-    categories: [
-      'Input Energy',
-      'Billed Energy',
-      'Collected Revenue',
-      'TeKC Loss',
-    ],
-  },
-  legend: {
-    show: false,
-  },
-};
+    var options = {
+      series: [
+        {
+          name: "AT&C Loss",
+          data: [1380, 1100, 990, 880],
+        },
+      ],
 
-var chart = new ApexCharts(document.querySelector("#funnelChart"), options);
-chart.render();
+      chart: {
+        type: 'bar',
+        height: 350,
+        dropShadow: { enabled: true },
+        fontFamily: "Google Sans Flex"  // <-- FONT FAMILY
+      },
+
+      // Color for each funnel bar
+      colors: [
+        "#43C6FF",
+        "#3295BF",
+        "#226380",
+        "#113240"
+      ],
+
+      plotOptions: {
+        bar: {
+          borderRadius: 0,
+          horizontal: true,
+          barHeight: '80%',
+          isFunnel: true,
+          distributed: true    // <-- REQUIRED FOR MULTI-COLOR
+        },
+      },
+
+      dataLabels: {
+        enabled: true,
+        style: {
+          fontFamily: "Poppins, Arial, sans-serif",   // <-- APPLY FONT TO LABELS
+          fontSize: "14px",
+        },
+        formatter: function (val, opt) {
+          return opt.w.globals.labels[opt.dataPointIndex] + ': ' + val
+        },
+        dropShadow: { enabled: true },
+      },
+
+      xaxis: {
+        categories: [
+          'Input Energy',
+          'Billed Energy',
+          'Collected Revenue',
+          'TeKC Loss',
+        ],
+        labels: {
+          style: {
+            fontFamily: "Google Sans Flex, sans-serif"  // <-- FONT FOR AXIS
+          }
+        }
+      },
+
+      legend: {
+        show: false,
+      },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#funnelChart"), options);
+    chart.render();
 
 
 
 
 
-//Circlewise AT&C Loss Chart
-var options = {
-  chart: {
-    type: 'bar',
-    height: 350
-  },
-  title: {
-    // text: "Circle-wise AT&C Loss",
-    align: "left",
-    style: {
-      fontSize: "18px",
-      fontWeight: 600
-    }
-  },
-  series: [{
-    name: "AT&C Loss (%)",
-    data: [11.5, 12.1, 13.0, 11.3] // You can adjust values
-  }],
-  xaxis: {
-    categories: ["Central", "North", "East", "West"],
-    labels: { style: { fontSize: "14px" } }
-  },
-  yaxis: {
-    labels: {
-      formatter: function (val) {
-        return val.toFixed(1) + "%";
+
+    //Circlewise AT&C Loss Chart
+    var options = {
+      chart: {
+        type: 'bar',
+        height: 350
+      },
+
+      title: {
+        // text: "Circle-wise AT&C Loss",
+        align: "left",
+        style: {
+          fontSize: "18px",
+          fontWeight: 600
+        }
+      },
+
+      series: [{
+        name: "AT&C Loss (%)",
+        data: [11.5, 12.1, 13.0, 11.3]
+      }],
+
+      xaxis: {
+        categories: ["Central", "North", "East", "West"],
+        labels: { style: { fontSize: "14px" } }
+      },
+
+      yaxis: {
+        labels: {
+          formatter: function (val) {
+            return val.toFixed(1) + "%";
+          }
+        }
+      },
+
+      plotOptions: {
+        bar: {
+          columnWidth: "50%",
+          borderRadius: 4,
+          distributed: true   // <-- REQUIRED for multi-color bars
+        }
+      },
+
+      // Different colors for each bar
+      colors: ["#4C9DD9", "#5FA8DD", "#3F6CC8", "#1C3D67"],
+
+      grid: {
+        borderColor: "#e0e0e0"
       }
-    }
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: "50%",
-      borderRadius: 4
-    }
-  },
-  colors: ["#4C9DD9", "#5FA8DD", "#3F6CC8", "#1C3D67"],
-  grid: {
-    borderColor: "#e0e0e0"
-  }
-};
+    };
 
-var chart = new ApexCharts(document.querySelector("#circleChart"), options);
-chart.render();
+    var chart = new ApexCharts(document.querySelector("#circleChart"), options);
+    chart.render();
 
-//AT&C Loss Trend Chart
-var options = {
-  chart: {
-    type: "line",
-    height: 300,
-    toolbar: { show: false }
-  },
 
-  title: {
-    // text: "AT&C Loss Trend",
-    align: "left",
-    style: {
-      fontSize: "18px",
-      fontWeight: 600
-    }
-  },
 
-  series: [
-    {
-      name: "AT&C Loss",
-      data: [9, 10, 11, 10, 12, 14, 16, 14, 13, 12] // Editable
-    }
-  ],
+    //AT&C Loss Trend Chart
+    var options = {
+      chart: {
+        type: "line",
+        height: 300,
+        toolbar: { show: false }
+      },
 
-  stroke: {
-    curve: "smooth",
-    width: 3
-  },
+      title: {
+        // text: "AT&C Loss Trend",
+        align: "left",
+        style: {
+          fontSize: "18px",
+          fontWeight: 600
+        }
+      },
 
-  markers: {
-    size: 5,
-    colors: "#fff",
-    strokeColors: "#1A73E8",
-    strokeWidth: 3
-  },
+      series: [
+        {
+          name: "AT&C Loss",
+          data: [9, 10, 11, 10, 12, 14, 16, 14, 13, 12] // Editable
+        }
+      ],
 
-  colors: ["#1A73E8"],
+      stroke: {
+        curve: "smooth",
+        width: 3
+      },
 
-  xaxis: {
-    categories: ["10", "14", "21", "28", "24", "34", "7", "8 ", "4 ", " 9"],
-    labels: {
-      style: { fontSize: "13px" }
-    }
-  },
- 
-  yaxis: {
-    min: 0,
-    max: 18,
-    tickAmount: 6,
-    labels: {
-      style: { fontSize: "13px" }
-    }
-  },
+      markers: {
+        size: 5,
+        colors: "#fff",
+        strokeColors: "#1A73E8",
+        strokeWidth: 3
+      },
 
-  grid: {
-    borderColor: "#e5e7eb"
-  }
-};
+      colors: ["#1A73E8"],
 
-var chart = new ApexCharts(document.querySelector("#atcTrendChart"), options);
-chart.render();
+      xaxis: {
+        categories: ["10", "14", "21", "28", "24", "34", "7", "8 ", "4 ", " 9"],
+        labels: {
+          style: { fontSize: "13px" }
+        }
+      },
+
+      yaxis: {
+        min: 0,
+        max: 18,
+        tickAmount: 6,
+        labels: {
+          style: { fontSize: "13px" }
+        }
+      },
+
+      grid: {
+        borderColor: "#e5e7eb"
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#atcTrendChart"), options);
+    chart.render();
 
 
 

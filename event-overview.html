@@ -453,8 +453,8 @@
             <div class="col-xxl-12">
               <div class="tableIndex">
                 <div class="table-responsive">
-                  <table id="eventOverview11" class="display">
-                    <thead>
+                  <table class="table tableMain display">
+                    <thead class="table-secondary">
                       <tr>
                         <th>Device ID</th>
                         <th>Event Type</th>
@@ -602,13 +602,19 @@
       },
       title: {
         text: 'Event Severity Trend (Last 24 Hours)',
-        align: 'left'
+        align: 'left',
+        style: {
+          color: '#adadad',
+          // fontSize: '20px',
+          fontWeight: 'bold',
+          // textTransform: 'capitalize'
+        }
       },
       grid: {
         row: {
-          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          colors: ['#f3f3f3', 'transparent'],
           opacity: 0.5
-        },
+        }
       },
       xaxis: {
         categories: ['Critical', 'Major', 'Minor', 'Pending'],

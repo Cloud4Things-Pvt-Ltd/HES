@@ -57,8 +57,8 @@
         border-radius: 8px;
         color: var(--text);
         text-decoration: none;
-        /* transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); */
-        font-size: 14px;
+        transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+        font-size: 16px;
         width: 100%;
     }
 
@@ -74,7 +74,8 @@
         border-radius: 8px;
         flex: 0 0 40px;
         font-size: 18px;
-        color: var(--muted);
+        color: #888888 !important;
+        background: #e7e7e7;
     }
 }
 
@@ -93,13 +94,17 @@
     color: white;
     background: transparent;
 } */
-.sidebar .nav-item.active a {
-    background: var(--primary);
-    color: #fff;
+.sidebar .nav-item.active a, .sidebar .nav-item.active a:hover, .sidebar .nav-item a:hover {
+    background: #fff !important;
+    color: var(--primary);
+}
+.nav-item.active .caret {
+    color: var(--primary);
 }
 
 .sidebar .nav-item.active a .icon {
-    color: #fff;
+    color: #fff !important;
+    background: var(--primary);
 }
 
 .submenu.show a,

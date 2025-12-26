@@ -32,7 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  
+
 </head>
 
 <body>
@@ -359,28 +359,28 @@
                   <div class="commandEach">
                     <div class="icon"><i class="bi bi-cloud-check"></i></div>
                     <h4>Online Meters</h4>
-                    <h2>2199</h2>
+                    <h2 class="text-success">2199</h2>
                   </div>
                 </div>
                 <div class="col-xxl-6">
                   <div class="commandEach">
                     <div class="icon"><i class="bi bi-slash-circle"></i></div>
                     <h4>Offline Meters</h4>
-                    <h2>739</h2>
+                    <h2 class="text-danger">739</h2>
                   </div>
                 </div>
                 <div class="col-xxl-4">
-                  <div class="commandEach" id="c1">
+                  <div class="" id="c1">
                     <a href="#"><i class="bi bi-eye-fill"></i> Read Now</a>
                   </div>
                 </div>
                 <div class="col-xxl-4">
-                  <div class="commandEach" id="c2">
+                  <div class="" id="c2">
                     <a href="#"><i class="bi bi-link-45deg"></i> Connect</a>
                   </div>
                 </div>
                 <div class="col-xxl-4">
-                  <div class="commandEach" id="c3">
+                  <div class="" id="c3">
                     <a href="#"><i class="bi bi-cloud-slash-fill"></i> Disconnect</a>
                   </div>
                 </div>
@@ -395,6 +395,26 @@
           </div>
         </div>
       </section>
+
+      <!--View Button Modal-->
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <section class="commandSec">
         <div class="container-fluid p-0">
@@ -421,7 +441,8 @@
                         <td>Mar 15, 2024</td>
                         <td><span class="pend">Pending</span></td>
                         <td>View</td>
-                        <td><a href="#"><i class="bi bi-eye-fill"></i> View</a></td>
+                        <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                              class="bi bi-eye-fill"></i> View</a></td>
                       </tr>
                       <tr>
                         <td>T0001011190600042</td>
@@ -756,7 +777,7 @@
     </main>
   </div>
 
-<!-- ================== JS FILES ================== -->
+  <!-- ================== JS FILES ================== -->
 
   <!-- Highcharts -->
   <script src="js/highmaps.js"></script>
@@ -786,56 +807,56 @@
 
   <!--Datepicker Range-->
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
   <script>
     //Pending Commands
-var options = {
-  series: [{
-    name: "Sent",
-    data: [10, 20, 15, 40, 20, 50, 30, 80, 150]
-  },
-  {
-    name: "Completed",
-    data: [22, 30, 25, 50, 40, 60, 70, 100, 200]
-  },
-  {
-    name: "Failed",
-    data: [44, 25, 20, 45, 30, 55, 60, 90, 120]
-  }
+    var options = {
+      series: [{
+        name: "Sent",
+        data: [10, 20, 15, 40, 20, 50, 30, 80, 150]
+      },
+      {
+        name: "Completed",
+        data: [22, 30, 25, 50, 40, 60, 70, 100, 200]
+      },
+      {
+        name: "Failed",
+        data: [44, 25, 20, 45, 30, 55, 60, 90, 120]
+      }
 
-  ],
-  colors: ["#0079fbff", "#0cd62eff", "#da0e0eff"],
-  chart: {
-    height: 350,
-    type: 'line',
-    zoom: {
-      enabled: false
-    }
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    curve: 'straight'
-  },
-  // title: {
-  //   text: 'Product Trends by Month',
-  //   align: 'left'
-  // },
-  grid: {
-    row: {
-      colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-      opacity: 0.5
-    },
-  },
-  xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-  }
-};
+      ],
+      colors: ["#0079fbff", "#0cd62eff", "#da0e0eff"],
+      chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      // title: {
+      //   text: 'Product Trends by Month',
+      //   align: 'left'
+      // },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+      }
+    };
 
-var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
-chart.render();
+    var chart = new ApexCharts(document.querySelector("#pendingCommands"), options);
+    chart.render();
   </script>
 
   <script>

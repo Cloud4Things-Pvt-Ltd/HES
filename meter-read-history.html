@@ -8,7 +8,7 @@
   <meta name="description" content="Cloud4Things" />
   <title>Cloud4Things HES - Meter Read History</title>
 
-<!-- ================== CSS FILES ================== -->
+  <!-- ================== CSS FILES ================== -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/custom.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -32,7 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
- 
+
 
 </head>
 
@@ -441,10 +441,14 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xxl-6">
-              <div id="loadProfile"></div>
+              <div id="loadProfile">
+                <h4 class="middle-subhead">Load Profile (24 Hours)</h4>
+              </div>
             </div>
             <div class="col-xxl-6">
-              <div id="consumptionChart"></div>
+              <div id="consumptionChart">
+                <h4 class="middle-subhead">Consumption (kwh)</h4>
+              </div>
             </div>
           </div>
         </div>
@@ -474,7 +478,7 @@
                     <div class="tableIndex">
                       <div class="table-responsive">
                         <table class="table tableMain display">
-                          <thead>
+                          <thead class="table-secondary">
                             <tr>
                               <th>Date & Time</th>
                               <th>Status</th>
@@ -658,7 +662,7 @@
   </main>
   </div>
 
- <!-- ================== JS FILES ================== -->
+  <!-- ================== JS FILES ================== -->
 
   <!-- Highcharts -->
   <script src="js/highmaps.js"></script>
@@ -688,99 +692,99 @@
 
   <!--Datepicker Range-->
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
   <script>
     //Load Profile
 
-var options = {
-  series: [{
-    name: 'series1',
-    data: [31, 40, 28, 51, 42, 109, 100]
-  }, {
-    name: 'series2',
-    data: [11, 32, 45, 32, 34, 52, 41]
-  }],
-  chart: {
-    height: 350,
-    type: 'area'
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    curve: 'smooth'
-  },
-  xaxis: {
-    type: 'datetime',
-    categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-  },
-  tooltip: {
-    x: {
-      format: 'dd/MM/yy HH:mm'
-    },
-  },
-};
+    var options = {
+      series: [{
+        name: 'series1',
+        data: [31, 40, 28, 51, 42, 109, 100]
+      }, {
+        name: 'series2',
+        data: [11, 32, 45, 32, 34, 52, 41]
+      }],
+      chart: {
+        height: 350,
+        type: 'area'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+      xaxis: {
+        type: 'datetime',
+        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+      },
+      tooltip: {
+        x: {
+          format: 'dd/MM/yy HH:mm'
+        },
+      },
+    };
 
-var chart = new ApexCharts(document.querySelector("#loadProfile"), options);
-chart.render();
+    var chart = new ApexCharts(document.querySelector("#loadProfile"), options);
+    chart.render();
 
-//Consumption Chart
+    //Consumption Chart
 
-var options = {
-  series: [{
-    name: 'Net Profit',
-    data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-  }, {
-    name: 'Revenue',
-    data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-  }, {
-    name: 'Free Cash Flow',
-    data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-  }],
-  chart: {
-    type: 'bar',
-    height: 350
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: '55%',
-      borderRadius: 5,
-      borderRadiusApplication: 'end'
-    },
-  },
-  dataLabels: {
-    enabled: false
-  },
-  stroke: {
-    show: true,
-    width: 2,
-    colors: ['transparent']
-  },
-  xaxis: {
-    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-  },
-  yaxis: {
-    title: {
-      text: '$ (thousands)'
-    }
-  },
-  fill: {
-    opacity: 1
-  },
-  tooltip: {
-    y: {
-      formatter: function (val) {
-        return "$ " + val + " thousands"
+    var options = {
+      series: [{
+        name: 'Net Profit',
+        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+      }, {
+        name: 'Revenue',
+        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+      }, {
+        name: 'Free Cash Flow',
+        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+      }],
+      chart: {
+        type: 'bar',
+        height: 350
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          borderRadius: 5,
+          borderRadiusApplication: 'end'
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+      },
+      xaxis: {
+        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+      },
+      yaxis: {
+        title: {
+          text: '$ (thousands)'
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return "$ " + val + " thousands"
+          }
+        }
       }
-    }
-  }
-};
+    };
 
-var chart = new ApexCharts(document.querySelector("#consumptionChart"), options);
-chart.render();
+    var chart = new ApexCharts(document.querySelector("#consumptionChart"), options);
+    chart.render();
   </script>
   <script>
     new WOW().init();

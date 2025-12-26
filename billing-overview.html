@@ -32,7 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
- 
+
 
 </head>
 
@@ -402,18 +402,32 @@
       <section class="billingOverviewCharts">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-xxl-5">
+            <div class="col-xxl-6">
               <div class="billingChartsEach">
                 <h4 class="middle-subhead">Revenue Analysis</h4>
                 <div id="chart1"></div>
               </div>
             </div>
-            <div class="col-xxl-4">
+            <!-- <div class="col-xxl-2">
               <div class="billingChartsEach">
                 <h4 class="middle-subhead">Revenue Analysis</h4>
                 <div id="chart2"></div>
               </div>
+            </div> -->
+            <div class="col-xxl-6">
+              <div class="billingChartsEach">
+                <h4 class="middle-subhead">Billing Success Rate</h4>
+                <div id="billingRateChart"></div>
+              </div>
             </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="billingOverviewBottom">
+        <div class="container-fluid">
+          <div class="row">
             <div class="col-xxl-3">
               <div class="collectionFunnel">
                 <h4 class="middle-subhead">Collection Funnel</h4>
@@ -434,26 +448,13 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="billingOverviewBottom">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xxl-5">
-              <div class="billingChartsEach">
-                <h4 class="middle-subhead">Billing Success Rate</h4>
-                <div id="billingRateChart"></div>
-              </div>
-            </div>
             <div class="col-xxl-4">
               <div class="billingChartsEach">
                 <h4 class="middle-subhead">Consumer Types</h4>
                 <div id="consumerTypeChart"></div>
               </div>
             </div>
-            <div class="col-xxl-3">
+            <div class="col-xxl-5">
               <div class="billingChartsEach">
                 <h4 class="middle-subhead">Residential Customers</h4>
                 <div class="table-responsive">
@@ -516,7 +517,7 @@
     </main>
   </div>
 
- <!-- ================== JS FILES ================== -->
+  <!-- ================== JS FILES ================== -->
 
   <!-- Highcharts -->
   <script src="js/highmaps.js"></script>
@@ -546,159 +547,159 @@
 
   <!--Datepicker Range-->
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
   <script>
-    
-/* ------------------------------
-     BILLING SUCCESS RATE (LINE)
- ------------------------------ */
-const billingOptions = {
-  chart: {
-    type: 'line',
-    height: 300,
-    toolbar: { show: false }
-  },
-  series: [{
-    name: "Success Rate",
-    data: [
-      95, 96, 95.5, 97, 96.2, 95.8, 96.7, 96.3, 96.8,
-      97.2, 96.9, 97.1, 96.5, 96.9, 97.3
-    ]
-  }],
-  stroke: {
-    width: 2,
-    curve: 'smooth'
-  },
-  colors: ["#1A73E8"],
-  xaxis: {
-    categories: [
-      "Jan 30 days", "3 Day", "31 Jan", "30 Jan",
-      "31 Jan", "3 Day", "Jan 30 days", "30 Jan",
-      "31 Jan", "Jan 30 days", "3 Day", "31 Jan",
-      "30 Jan", "Jan 30 days", "3 Day"
-    ]
-  },
-  yaxis: {
-    min: 94,
-    max: 100,
-    labels: {
-      formatter: val => val.toFixed(0) + "%"
-    }
-  },
-  grid: {
-    strokeDashArray: 4,
-    borderColor: "#eee"
-  }
-};
 
-new ApexCharts(document.querySelector("#billingRateChart"), billingOptions).render();
-
-
-/* ------------------------------
-    CONSUMER TYPE DONUT
------------------------------- */
-const consumerOptions = {
-  chart: {
-    type: 'donut',
-    height: 300
-  },
-  labels: ["Domestic", "Commercial", "Industrial", "Agriculture", "Anulustricc"],
-  series: [39, 25, 15, 8, 16],
-  colors: ["#1A73E8", "#4378FF", "#6B95FF", "#8BB2FF", "#3A62D7"],
-  legend: {
-    position: "right",
-    fontSize: "14px"
-  },
-  plotOptions: {
-    pie: {
-      donut: {
-        size: "65%"
+    /* ------------------------------
+         BILLING SUCCESS RATE (LINE)
+     ------------------------------ */
+    const billingOptions = {
+      chart: {
+        type: 'line',
+        height: 300,
+        toolbar: { show: false }
+      },
+      series: [{
+        name: "Success Rate",
+        data: [
+          95, 96, 95.5, 97, 96.2, 95.8, 96.7, 96.3, 96.8,
+          97.2, 96.9, 97.1, 96.5, 96.9, 97.3
+        ]
+      }],
+      stroke: {
+        width: 2,
+        curve: 'smooth'
+      },
+      colors: ["#1A73E8"],
+      xaxis: {
+        categories: [
+          "Jan 30 days", "3 Day", "31 Jan", "30 Jan",
+          "31 Jan", "3 Day", "Jan 30 days", "30 Jan",
+          "31 Jan", "Jan 30 days", "3 Day", "31 Jan",
+          "30 Jan", "Jan 30 days", "3 Day"
+        ]
+      },
+      yaxis: {
+        min: 94,
+        max: 100,
+        labels: {
+          formatter: val => val.toFixed(0) + "%"
+        }
+      },
+      grid: {
+        strokeDashArray: 4,
+        borderColor: "#eee"
       }
-    }
-  }
-};
+    };
 
-new ApexCharts(document.querySelector("#consumerTypeChart"), consumerOptions).render();
+    new ApexCharts(document.querySelector("#billingRateChart"), billingOptions).render();
 
 
+    /* ------------------------------
+        CONSUMER TYPE DONUT
+    ------------------------------ */
+    const consumerOptions = {
+      chart: {
+        type: 'donut',
+        height: 300
+      },
+      labels: ["Domestic", "Commercial", "Industrial", "Agriculture", "Anulustricc"],
+      series: [39, 25, 15, 8, 16],
+      colors: ["#1A73E8", "#4378FF", "#6B95FF", "#8BB2FF", "#3A62D7"],
+      legend: {
+        position: "right",
+        fontSize: "14px"
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: "65%"
+          }
+        }
+      }
+    };
 
-// -------- Chart 1 --------
-var options1 = {
-  chart: {
-    type: "line",
-    height: 220,
-    toolbar: { show: false },
-    zoom: { enabled: false }
-  },
-  series: [{
-    name: "Revenue",
-    data: [6, 6.5, 6.1, 7.2, 7.8, 6.9, 6.2, 6.8, 7.3, 6.9, 7.6, 6.4]
-  }],
-  stroke: { width: 3, curve: "smooth" },
-  colors: ["#1A73E8"],
-  xaxis: {
-    categories: ["Last 30 days", "1 Apr", "2 Apr", "3 Apr", "4 Apr", "5 Apr", "6 Apr", "7 Apr", "8 Apr", "9 Apr", "10 Apr"],
-    labels: { style: { fontSize: "12px" } },
-    tooltip: { enabled: false }
-  },
-  yaxis: {
-    min: 3,
-    max: 10,
-    tickAmount: 3,
-    decimalsInFloat: 0,
-    labels: {
-      formatter: val => "₹" + Math.round(val)   // <- rounds values
-    }
-  },
-  grid: {
-    borderColor: "#eaeaea",
-    strokeDashArray: 4
-  },
-  markers: { size: 0 }
-};
+    new ApexCharts(document.querySelector("#consumerTypeChart"), consumerOptions).render();
 
-var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
-chart1.render();
 
-// -------- Chart 2 --------
-var options2 = {
-  chart: {
-    type: "line",
-    height: 220,
-    toolbar: { show: false },
-    zoom: { enabled: false }
-  },
-  series: [{
-    name: "Revenue",
-    data: [7, 7.3, 7.1, 6.8, 6.5, 6.2, 6.7, 6.9, 6.8, 7.1]
-  }],
-  stroke: { width: 3, curve: "smooth" },
-  colors: ["#1A73E8"],
-  xaxis: {
-    categories: ["Last 30-days", "104 dgo"],
-    labels: { style: { fontSize: "12px" } },
-    tooltip: { enabled: false }
-  },
-  yaxis: {
-    min: 3,
-    max: 10,
-    tickAmount: 3,
-    decimalsInFloat: 0,
-    labels: {
-      formatter: val => "₹" + Math.round(val)   // <- rounds values
-    }
-  },
-  grid: {
-    borderColor: "#eaeaea",
-    strokeDashArray: 4
-  },
-  markers: { size: 0 }
-};
 
-var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
-chart2.render();
+    // -------- Chart 1 --------
+    var options1 = {
+      chart: {
+        type: "line",
+        height: 220,
+        toolbar: { show: false },
+        zoom: { enabled: false }
+      },
+      series: [{
+        name: "Revenue",
+        data: [6, 6.5, 6.1, 7.2, 7.8, 6.9, 6.2, 6.8, 7.3, 6.9, 7.6, 6.4]
+      }],
+      stroke: { width: 3, curve: "smooth" },
+      colors: ["#1A73E8"],
+      xaxis: {
+        categories: ["Last 30 days", "1 Apr", "2 Apr", "3 Apr", "4 Apr", "5 Apr", "6 Apr", "7 Apr", "8 Apr", "9 Apr", "10 Apr"],
+        labels: { style: { fontSize: "12px" } },
+        tooltip: { enabled: false }
+      },
+      yaxis: {
+        min: 3,
+        max: 10,
+        tickAmount: 3,
+        decimalsInFloat: 0,
+        labels: {
+          formatter: val => "₹" + Math.round(val)   // <- rounds values
+        }
+      },
+      grid: {
+        borderColor: "#eaeaea",
+        strokeDashArray: 4
+      },
+      markers: { size: 0 }
+    };
+
+    var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+    chart1.render();
+
+    // -------- Chart 2 --------
+    var options2 = {
+      chart: {
+        type: "line",
+        height: 220,
+        toolbar: { show: false },
+        zoom: { enabled: false }
+      },
+      series: [{
+        name: "Revenue",
+        data: [7, 7.3, 7.1, 6.8, 6.5, 6.2, 6.7, 6.9, 6.8, 7.1]
+      }],
+      stroke: { width: 3, curve: "smooth" },
+      colors: ["#1A73E8"],
+      xaxis: {
+        categories: ["Last 30-days", "104 dgo"],
+        labels: { style: { fontSize: "12px" } },
+        tooltip: { enabled: false }
+      },
+      yaxis: {
+        min: 3,
+        max: 10,
+        tickAmount: 3,
+        decimalsInFloat: 0,
+        labels: {
+          formatter: val => "₹" + Math.round(val)   // <- rounds values
+        }
+      },
+      grid: {
+        borderColor: "#eaeaea",
+        strokeDashArray: 4
+      },
+      markers: { size: 0 }
+    };
+
+    var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+    chart2.render();
 
 
   </script>

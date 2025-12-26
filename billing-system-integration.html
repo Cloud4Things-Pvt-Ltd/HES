@@ -8,7 +8,7 @@
   <meta name="description" content="Cloud4Things" />
   <title>Cloud4Things HES - Billing System Integration</title>
 
- <!-- ================== CSS FILES ================== -->
+  <!-- ================== CSS FILES ================== -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/custom.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -32,7 +32,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="css/datatables.min.css" />
 
-  
+
 
 </head>
 
@@ -345,10 +345,10 @@
           Integration</span>
       </h4>
 
-      <section class="top-cards">
+      <section class="top-cards" id="billSystTop">
         <div class="container-fluid p-0">
           <div class="row g-0">
-            <div class="col-xxl-6">
+            <div class="col-xxl-4">
               <div class="card-each">
                 <div class="card-body">
                   <h4>Billing Import Success</h4>
@@ -364,7 +364,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xxl-6">
+            <div class="col-xxl-3">
               <div class="card-each">
                 <div class="card-body">
                   <h4>Pending Bill Data</h4>
@@ -374,8 +374,30 @@
               <div class="card-each">
                 <div class="card-body">
                   <h4>Failed Billing Jobs</h4>
-                  <h2>78 <span class="float-end">Acceptable</span></h2>
+                  <h2>78 <span class="float-end bg-primary p-1 rounded fs-6 text-white fw-light">Acceptable</span></h2>
                 </div>
+              </div>
+            </div>
+            <!-- Exception Queue -->
+            <div class="col-lg-5 col-md-12">
+              <div class="card" id="excQue">
+                <h4 class="middle-subhead">Exception Queue</h4>
+
+                <div class="exception-row bg-warning p-2 rounded mb-2">
+                  <span>Missing Reads</span>
+                  <span class="float-end">1,258</span>
+                </div>
+
+                <div class="exception-row bg-secondary text-white p-2 rounded mb-2">
+                  <span>Duplicate Reads</span>
+                  <span class="float-end">678</span>
+                </div>
+
+                <div class="exception-row bg-danger text-white p-2 rounded mb-2">
+                  <span>Rejected Reads</span>
+                  <span class="float-end">843</span>
+                </div>
+
               </div>
             </div>
           </div>
@@ -386,7 +408,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xxl-12">
-              <div class="flow-container">
+              <div class="flow-container mb-4">
 
                 <div class="box">HES</div>
                 <div class="arrow">→</div>
@@ -408,66 +430,45 @@
 
       <section class="billingOverviewBottom">
         <div class="container-fluid">
-  <div class="row g-4">
+          <div class="row g-4">
 
-    <!-- Billing Sync Trend -->
-    <div class="col-lg-4 col-md-12">
-      <div class="card p-3">
-        <h4 class="middle-subhead">Billing Sync Trend (7 days)</h4>
-        <div id="billingSyncTrendChart"></div>
-      </div>
-    </div>
+            <!-- Billing Sync Trend -->
+            <div class="col-lg-6 col-md-12">
+              <div class="card p-3">
+                <h4 class="middle-subhead">Billing Sync Trend (7 days)</h4>
+                <div id="billingSyncTrendChart"></div>
+              </div>
+            </div>
 
-    <!-- Billing Cycle Status -->
-    <div class="col-lg-4 col-md-12">
-      <div class="card p-3">
-        <h4 class="middle-subhead">Billing Cycle Status</h4>
+            <!-- Billing Cycle Status -->
+            <div class="col-lg-6 col-md-12">
+              <div class="card p-3">
+                <h4 class="middle-subhead">Billing Cycle Status</h4>
 
-        <div class="mt-2">
-          <span class="pill success">Success</span>
-          <span class="text-muted small">Previous</span>
+                <div class="mt-2">
+                  <span class="pill success text-success fw-bold">Success</span>
+                  <span class="text-success small float-end  text-success fw-bold">Previous</span>
+                </div>
+
+                <div class="mt-2">
+                  <span class="pill failed text-danger fw-bold">Failed</span>
+                  <span class="text-danger small float-end  text-success fw-bold">Cycle</span>
+                </div>
+
+                <h6 class="fw-bold mt-4">Billed vs Imported Read</h6>
+
+                <div class="bar-value">45.204</div>
+                <div id="bar1"></div>
+
+                <div class="bar-value">46.252</div>
+                <div id="bar2"></div>
+              </div>
+            </div>
+
+            
+
+          </div>
         </div>
-
-        <div class="mt-2">
-          <span class="pill failed">Failed</span>
-          <span class="text-muted small">Cycle</span>
-        </div>
-
-        <h6 class="fw-bold mt-4">Billed vs Imported Read</h6>
-
-        <div class="bar-value mt-2">45.204</div>
-        <div id="bar1"></div>
-
-        <div class="bar-value mt-4">46.252</div>
-        <div id="bar2"></div>
-      </div>
-    </div>
-
-    <!-- Exception Queue -->
-    <div class="col-lg-4 col-md-12">
-      <div class="card p-3">
-        <h4 class="middle-subhead">Exception Queue</h4>
-
-        <div class="exception-row">
-          <span>Missing Reads</span>
-          <span>1,258</span>
-        </div>
-
-        <div class="exception-row">
-          <span>Duplicate Reads</span>
-          <span>678</span>
-        </div>
-
-        <div class="exception-row">
-          <span>Rejected Reads</span>
-          <span>843</span>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
       </section>
 
 
@@ -513,94 +514,94 @@
 
   <!--Datepicker Range-->
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-   <script type="text/javascript" src="js/moment.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.min.js"></script>
 
   <script>
-    
-var trendOptions = {
-  chart: { type: "line", height: 230, toolbar: { show: false } },
-  series: [{ name: "Reads", data: [40, 60, 55, 70, 65, 80, 90] }],
-  stroke: { width: 3, curve: "smooth" },
-  xaxis: {
-    categories: ["Mar 23", "Apr 29", "Apr 15", "Apr 08", "Apr 03", "Apr 15", "Apr 08", "Apr 03"],
-  },
-  colors: ["#3b82f6"]
-};
-new ApexCharts(document.querySelector("#billingSyncTrendChart"), trendOptions).render();
 
-/* Horizontal Bars */
-var barOptions1 = {
-  chart: { type: "bar", height: 60, sparkline: { enabled: true } },
-  series: [{ data: [45.204] }],
-  plotOptions: { bar: { horizontal: true, barHeight: "40%" } },
-  colors: ["#1d4ed8"]
-};
-new ApexCharts(document.querySelector("#bar1"), barOptions1).render();
+    var trendOptions = {
+      chart: { type: "line", height: 230, toolbar: { show: false } },
+      series: [{ name: "Reads", data: [40, 60, 55, 70, 65, 80, 90] }],
+      stroke: { width: 3, curve: "smooth" },
+      xaxis: {
+        categories: ["Mar 23", "Apr 29", "Apr 15", "Apr 08", "Apr 03", "Apr 15", "Apr 08", "Apr 03"],
+      },
+      colors: ["#3b82f6"]
+    };
+    new ApexCharts(document.querySelector("#billingSyncTrendChart"), trendOptions).render();
 
-var barOptions2 = {
-  chart: { type: "bar", height: 60, sparkline: { enabled: true } },
-  series: [{ data: [46.252] }],
-  plotOptions: { bar: { horizontal: true, barHeight: "40%" } },
-  colors: ["#1d4ed8"]
-};
-new ApexCharts(document.querySelector("#bar2"), barOptions2).render();
+    /* Horizontal Bars */
+    var barOptions1 = {
+      chart: { type: "bar", height: 60, sparkline: { enabled: true } },
+      series: [{ data: [66] }],
+      plotOptions: { bar: { horizontal: true, barHeight: "40%" } },
+      colors: ["#1d4ed8"]
+    };
+    new ApexCharts(document.querySelector("#bar1"), barOptions1).render();
 
-//BillingImport
-var options = {
-  chart: {
-    type: 'donut',
-    height: 180
-  },
+    var barOptions2 = {
+      chart: { type: "bar", height: 60, sparkline: { enabled: true } },
+      series: [{ data: [42] }],
+      plotOptions: { bar: { horizontal: true, barHeight: "40%" } },
+      colors: ["#1d4ed8"]
+    };
+    new ApexCharts(document.querySelector("#bar2"), barOptions2).render();
 
-  series: [98.4],
-  labels: [''],
+    //BillingImport
+    var options = {
+      chart: {
+        type: 'donut',
+        height: 180
+      },
 
-  plotOptions: {
-    pie: {
-      donut: {
-        size: '70%',
-        labels: {
-          show: true,
-          name: { show: false },
-          value: {
-            show: true,
-            fontSize: '22px',
-            fontWeight: 600,
-            formatter: (val) => val + "%"
+      series: [98.4],
+      labels: [''],
+
+      plotOptions: {
+        pie: {
+          donut: {
+            size: '70%',
+            labels: {
+              show: true,
+              name: { show: false },
+              value: {
+                show: true,
+                fontSize: '22px',
+                fontWeight: 600,
+                formatter: (val) => val + "%"
+              }
+            }
           }
         }
+      },
+
+      colors: ['#67c17b'],   // green
+      fill: {
+        type: "gradient",
+        gradient: {
+          shade: "light",
+          type: "diagonal1",
+          gradientToColors: ["#b9e5c7"],
+          stops: [0, 100]
+        }
+      },
+
+      stroke: {
+        width: 6,
+        colors: ["#e6f4ea"]
+      },
+
+      dataLabels: {
+        enabled: false
+      },
+
+      legend: {
+        show: false
       }
-    }
-  },
+    };
 
-  colors: ['#67c17b'],   // green
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "light",
-      type: "diagonal1",
-      gradientToColors: ["#b9e5c7"],
-      stops: [0, 100]
-    }
-  },
-
-  stroke: {
-    width: 6,
-    colors: ["#e6f4ea"]
-  },
-
-  dataLabels: {
-    enabled: false
-  },
-
-  legend: {
-    show: false
-  }
-};
-
-var chart = new ApexCharts(document.querySelector("#billingImport"), options);
-chart.render();
+    var chart = new ApexCharts(document.querySelector("#billingImport"), options);
+    chart.render();
 
   </script>
 
