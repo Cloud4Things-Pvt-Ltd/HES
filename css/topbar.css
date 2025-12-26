@@ -115,6 +115,7 @@ button#btnTheme {
     border-radius: 50%;
     margin-left: 0px;
     border: none;
+    display: none;
 }
 
 button#btnFullscreen {
